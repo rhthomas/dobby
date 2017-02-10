@@ -8,12 +8,12 @@
 #ifndef _GLOBAL_H
 #define _GLOBAL_H
 
-typedef struct /* some name */ {
-	// zero flag for alu
-	uint8_t z:1;
-} /* some name */;
+typedef struct bus_t {
+	uint8_t z:1;   // zero flag from ALU
+	uint16_t data; // data currently on bus
+} bus_t;
 
 // bus is 16-bits wide, 4 dedicated to opcodes.
-uint16_t bus_data;
+bus_t bus;
 
 #endif // _GLOBAL_H

@@ -7,32 +7,32 @@
 
 #include "alu.h"
 
-void alu_compute(void)
+void alu_compute(uint8_t opcode, uint8_t opA, uint8_t opB)
 {
-	switch(/* something */) {
+	switch(opcode) {
 		case ADD:
-			/* out = aluA + aluB; */
+			ac = opA + opB;
 			break;
 		case SUB:
-			/* out = aluA - aluB; */
+			ac = opA - opB;
 			break;
 		case AND:
-			/* out = aluA & aluB; */
+			ac = opA & opB;
 			break;
 		case OR:
-			/* out = aluA | aluB; */
+			ac = opA | opB;
 			break;
 		case NOT:
-			/* out = ~aluA; */
+			ac = ~opA;
 			break;
 		case XOR:
-			/* out = aluA ^ aluB; */
+			ac = opA ^ opB;
 			break;
 		case ROTR:
-			/* out = (aluA >> aluB) | (aluA << (sizeof(aluA)-aluB)) */
+			ac = (opA >> opB) | (opA << (sizeof(opA)-opB));
 			break;
 		case ROTL:
-			/* out = (aluA << aluB) | (aluA >> (sizeof(aluA)-aluB)) */
+			ac = (opA << opB) | (opA >> (sizeof(opA)-opB));
 			break;
 	}
 }

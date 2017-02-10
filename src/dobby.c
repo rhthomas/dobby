@@ -7,10 +7,15 @@
  */
 
 #include <stdio.h>
+#include "alu.h"
+#include "decoder.h"
+#include "global.h"
+#include "memory.h"
 #include "opcodes.h"
 #include "registers.h"
 
 int main(void)
 {
-
+	printf("Hello, Dobby!\n");
+	return 0;
 }

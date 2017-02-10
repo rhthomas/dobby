@@ -8,6 +8,8 @@
 #ifndef _REGISTERS_H
 #define _REGISTERS_H
 
+#include <stdint.h>
+
 /**
  * @brief Program counter.
  */

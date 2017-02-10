@@ -3,14 +3,25 @@
  * @author Rhys Thomas (rt8g15@soton.ac.uk)
  * @created 2017-02-10
  * @brief Von Neumann system, single memory space for progam and data.
- * @details RAM and ROM both have 256 addresses with 16-bits
- *  of data width, therefore 512bytes of storage.
+ *
+ * RAM and ROM both have 256 addresses with 16-bits of data width, therefore
+ * 512 bytes of storage available.
  */
 
 #include "memory.h"
 
+/**
+ * @brief Random access memory.
+ *
+ * Working out during ALU computation is stored here.
+ */
 uint16_t ram[MEM_SIZE];
 
+/**
+ * @brief Read only memory.
+ *
+ * Program is stored here.
+ */
 uint16_t rom[MEM_SIZE] = {
     0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, // 0x00 - 0x07
     0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, // 0x08 - 0x0F
@@ -46,12 +57,17 @@ uint16_t rom[MEM_SIZE] = {
     0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000  // 0xF8 - 0xFF
 };
 
-void write_rom(uint16_t data, uint8_t addr)
+void write_ram(uint8_t addr)
 {
-
+	ram[addr] = ac;
 }
 
-void read_rom(uint8_t addr)
+uint16_t read_rom(uint8_t addr)
 {
+	return rom[addr];
+}
 
+uint16_t read_ram(uint8_t addr)
+{
+	return ram[addr];
 }
