@@ -9,5 +9,9 @@
 
 #include "opcodes.h"
 
+void alu_do(void)
+{
+	
+}
 
 #endif // _ALU_H
