@@ -1,0 +1,18 @@
+#!/bin/bash
+
+guards=$(echo $1 | tr [:lower:] [:upper:])
+
+cat >> inc/$1.h << EOF
+/**
+ * @file $1.h
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @created $(date +"%Y-%m-%d")
+ */
+
+#ifndef _${guards}_H
+#define _${guards}_H
+
+
+
+#endif // _${guards}_H
+EOF
