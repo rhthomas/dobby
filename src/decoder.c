@@ -36,15 +36,15 @@ void decode(uint16_t ir) {
 			/* next operation is WRTE */
 			break;
 		case LOAD:
-			/* load data from rom[addr] to ac */
-			ac = read_rom(addr);
+			/* load data from rom[addr] to data bus */
+			read_rom(addr);
 			break;
 		case WRTE:
-			/* write ac data to ram[addr] */
+			/* write data bus to ram[addr] */
 			write_ram(addr);
 			break;
 		case JUMP:
-			/* jump to location */
+			/* jump to address in ROM */
 			pc = addr;
 			break;
 	}

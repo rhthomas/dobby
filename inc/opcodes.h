@@ -3,7 +3,8 @@
  * @author Rhys Thomas (rt8g15@soton.ac.uk)
  * @created 2017-02-10
  * @brief Definitions of opcodes.
- * @details Instruction set based on 4-bit opcodes.
+ * 
+ * Instruction set based on 4-bit opcodes.
  */
 
 #ifndef _OPCODES_H

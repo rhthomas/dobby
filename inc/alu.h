@@ -12,6 +12,8 @@
 #include "opcodes.h"
 // access to ac
 #include "registers.h"
+// access to data bus
+#include "global.h"
 
 /**
  * @brief Sets accumulator to result of ALU operation.
@@ -20,5 +22,10 @@
  * the result to the accumulator.
  */
 void alu_compute(uint8_t opcode, uint8_t opA, uint8_t opB);
+
+/**
+ * @brief Writes data from accumulator to the data bus.
+ */
+void ac_to_bus(void);
 
 #endif // _ALU_H

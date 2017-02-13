@@ -36,3 +36,8 @@ void alu_compute(uint8_t opcode, uint8_t opA, uint8_t opB)
 			break;
 	}
 }
+
+void ac_to_bus(void)
+{
+	bus = ac;
+}

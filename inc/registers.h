@@ -9,6 +9,8 @@
 #define _REGISTERS_H
 
 #include <stdint.h>
+// access to data bus
+#include "global.h"
 
 /**
  * @brief Program counter.
@@ -24,5 +26,10 @@ uint16_t ir;
  * @brief Accumulator.
  */
 uint16_t ac;
+
+/**
+ * @brief Load instruction register from bus.
+ */
+void load_ir(void);
 
 #endif // _REGISTERS_H

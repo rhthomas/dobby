@@ -11,16 +11,12 @@
 #include "memory.h"
 
 /**
- * @brief Random access memory.
- *
- * Working out during ALU computation is stored here.
+ * @brief Random access memory. ALU computation is stored here.
  */
 uint16_t ram[MEM_SIZE];
 
 /**
- * @brief Read only memory.
- *
- * Program is stored here.
+ * @brief Read only memory. Program is stored here.
  */
 uint16_t rom[MEM_SIZE] = {
     0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, // 0x00 - 0x07
@@ -59,15 +55,18 @@ uint16_t rom[MEM_SIZE] = {
 
 void write_ram(uint8_t addr)
 {
-	ram[addr] = ac;
+	// write data on bus to ram[addr]
+	ram[addr] = bus;
 }
 
-uint16_t read_rom(uint8_t addr)
+void read_rom(uint8_t addr)
 {
-	return rom[addr];
+	// write data in rom[addr] to bus
+	bus = rom[addr];
 }
 
-uint16_t read_ram(uint8_t addr)
+void read_ram(uint8_t addr)
 {
-	return ram[addr];
+	// write data in ram[addr] to bus
+	bus = ram[addr];
 }

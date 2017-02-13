@@ -13,27 +13,27 @@
 
 // access to ac
 #include "registers.h"
+// access to data bus
+#include "global.h"
 
 #define MEM_SIZE 256
 
 /**
- * @brief Writes data to address in RAM.
- * @param addr Writes data from ac to one of 256 available addresses.
+ * @brief Writes data from bus to address in RAM.
+ * @param addr Address to write bus data to.
  */
 void write_ram(uint8_t addr);
 
 /**
- * @brief Reads from address in ROM.
+ * @brief Writes data from address in ROM to the data bus.
  * @param addr Address to read data from.
- * @return 16-bit value stored in rom[addr].
  */
-uint16_t read_rom(uint8_t addr);
+void read_rom(uint8_t addr);
 
 /**
- * @brief Reads from address in RAM.
+ * @brief Writes data from address in RAM to the data bus.
  * @param addr Address to read data from.
- * @return 16-bit value stored in ram[addr].
  */
-uint16_t read_ram(uint8_t addr);
+void read_ram(uint8_t addr);
 
 #endif // _MEMORY_H

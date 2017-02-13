@@ -21,6 +21,8 @@
 #include "opcodes.h"
 // access to ac and ir
 #include "registers.h"
+// access to data bus
+#include "global.h"
 
 /**
  * @brief Decodes instruction register.
