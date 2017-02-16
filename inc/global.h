@@ -10,7 +10,14 @@
 
 #include <stdint.h>
 
-// bus is 16-bits wide, 4 dedicated to opcodes.
-uint16_t bus;
+typedef struct bus_t {
+	// data bus
+	uint16_t data;
+	// address bus
+	uint16_t addr;
+}
+
+// address bus and data bus are 16 bits wide
+bus_t bus;
 
 #endif // _GLOBAL_H

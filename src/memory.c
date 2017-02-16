@@ -62,7 +62,7 @@ void write_ram(uint8_t addr)
 void read_rom(uint8_t addr)
 {
 	// write data in rom[addr] to bus
-	bus = rom[addr];
+	bus.data = rom[addr];
 }
 
 void read_ram(uint8_t addr)

@@ -19,7 +19,7 @@ void decode(uint16_t ir) {
 	uint8_t a = (ir & 0x0FC0) >> 6;
 	// operand b is the lower 6 bits, 0b0000.0000.0011.1111
 	uint8_t b = ir & 0x003F;
-	// if an address is the only parameter, take all bits except opcode
+	// what is this?
 	uint16_t addr = ir & 0x0FFF;
 
 	switch(opcode) {
