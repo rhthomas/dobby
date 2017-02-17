@@ -3,33 +3,31 @@
  * @author Rhys Thomas (rt8g15@soton.ac.uk)
  * @created 2017-02-10
  * @brief Registers in CPU.
+ *
+ * +----------+
+ * |    pc    |
+ * +----------+
+ * |    ir    |
+ * +----------+
+ * |    ac    |
+ * +----------+
  */
 
 #ifndef _REGISTERS_H
 #define _REGISTERS_H
 
 #include <stdint.h>
-// access to data bus
-#include "global.h"
+#include "global.h"	// access to data and address bus
 
 /**
- * @brief Program counter.
+ * @brief Register structure.
+ *
+ * Contains program counter, instruction register and accumulator.
  */
-uint16_t pc;
-
-/**
- * @brief Instruction register.
- */
-uint16_t ir;
-
-/**
- * @brief Accumulator.
- */
-uint16_t ac;
-
-/**
- * @brief Load instruction register from bus.
- */
-void load_ir(void);
+struct {
+	uint16_t pc; // program counter
+	uint16_t ir; // instruction register
+	uint16_t ac; // accumulator
+} regs;
 
 #endif // _REGISTERS_H

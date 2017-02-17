@@ -11,29 +11,19 @@
 #ifndef _MEMORY_H
 #define _MEMORY_H
 
-// access to ac
-#include "registers.h"
-// access to data bus
-#include "global.h"
+#include "registers.h"	// access to accumulator
+#include "global.h"		// access to data and address bus
 
 #define MEM_SIZE 256
 
 /**
- * @brief Writes data from bus to address in RAM.
- * @param addr Address to write bus data to.
+ * @brief Writes data from bus to address in memory.
  */
-void write_ram(uint8_t addr);
+void mem_write(void);
 
 /**
- * @brief Writes data from address in ROM to the data bus.
- * @param addr Address to read data from.
+ * @brief Writes data from address in memory to the data bus.
  */
-void read_rom(uint8_t addr);
-
-/**
- * @brief Writes data from address in RAM to the data bus.
- * @param addr Address to read data from.
- */
-void read_ram(uint8_t addr);
+void mem_read(void);
 
 #endif // _MEMORY_H

@@ -7,37 +7,32 @@
 
 #include "alu.h"
 
-void alu_compute(uint8_t opcode, uint8_t opA, uint8_t opB)
+void alu_compute(void)
 {
-	switch(opcode) {
+	switch(alu_task) {
 		case ADD:
-			ac = opA + opB;
+			regs.ac = alu_opA + alu_opB;
 			break;
 		case SUB:
-			ac = opA - opB;
+			regs.ac = alu_opA - alu_opB;
 			break;
 		case AND:
-			ac = opA & opB;
+			regs.ac = alu_opA & alu_opB;
 			break;
 		case OR:
-			ac = opA | opB;
+			regs.ac = alu_opA | alu_opB;
 			break;
 		case NOT:
-			ac = ~opA;
+			regs.ac = ~alu_opA;
 			break;
 		case XOR:
-			ac = opA ^ opB;
+			regs.ac = alu_opA ^ alu_opB;
 			break;
 		case ROTR:
-			ac = (opA >> opB) | (opA << (sizeof(opA)-opB));
+			regs.ac = (alu_opA >> alu_opB) | (alu_opA << (sizeof(alu_opA)-alu_opB));
 			break;
 		case ROTL:
-			ac = (opA << opB) | (opA >> (sizeof(opA)-opB));
+			regs.ac = (alu_opA << alu_opB) | (alu_opA >> (sizeof(alu_opA)-alu_opB));
 			break;
 	}
-}
-
-void ac_to_bus(void)
-{
-	bus.data = ac;
 }

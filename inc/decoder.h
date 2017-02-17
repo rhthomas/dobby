@@ -13,20 +13,23 @@
 #ifndef _DECODER_H
 #define _DECODER_H
 
-// alu_compute()
-#include "alu.h"
-// read_rom() read_ram() write_ram()
-#include "memory.h"
-// defines opcodes
-#include "opcodes.h"
-// access to ac and ir
-#include "registers.h"
-// access to data bus
-#include "global.h"
+#include "alu.h"		// alu_compute() alu_task alu_opA alu_opB
+#include "memory.h"		// read_rom() read_ram() write_ram()
+#include "opcodes.h"	// defines opcodes
+#include "registers.h"	// access to ac and ir
+#include "global.h"		// access to data bus
+
+// do I need to #define all the states?
+uint8_t present_s, next_s;
 
 /**
  * @brief Decodes instruction register.
  */
-void decode(uint16_t ir);
+void decode(void);
+
+/**
+ * @brief Emulates fetch-execute cycle.
+ */
+void update_cpu(void);
 
 #endif // _DECODER_H
