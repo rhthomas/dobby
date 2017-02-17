@@ -3,9 +3,6 @@
  * @author Rhys Thomas (rt8g15@soton.ac.uk)
  * @created 2017-02-10
  * @brief Detailing ALU arithmetic operations.
- * @todo Rethink how ALU works. Are we utilising an accumulator ISA (see
- *  slides). Do we *need* two operands or are we taking one from the
- *  accumulator?
  */
 
 #ifndef _ALU_H
@@ -15,11 +12,8 @@
 #include "registers.h"	// access to accumulator
 #include "global.h"		// access to data and address bus
 
-// inputs to the alu
-uint8_t alu_opA, alu_opB;
-// alu operations
-// do the #defines need to be written for the case statements?
-uint8_t alu_task;
+uint8_t alu_opA, alu_opB;	// inputs to the alu
+uint8_t alu_task;			// alu operations
 
 /**
  * @brief Sets accumulator to result of ALU operation.

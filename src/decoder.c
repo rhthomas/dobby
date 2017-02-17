@@ -3,7 +3,6 @@
  * @author Rhys Thomas (rt8g15@soton.ac.uk)
  * @created 2017-02-10
  * @brief Instruction decoder.
- * @todo Figure out how you're going to interface with the ALU.
  *
  * Instructions are stored in the instruction register, ir. Top 4 bits
  * are opcodes, middle 6 are operand A and lower 6 bits are operand B.
@@ -58,15 +57,6 @@ void decode(void) {
 	}
 }
 
-/** On the subject of LOAD and WRTE functionality.
- * Typically they go from a register to memory and vice versa. Which register
- * gets read or written to is a function of your arch. In a pure memory-acc
- * type WRTE takes ac, puts it on the bus, then puts the bus to memory based on
- * address in the address bus. The other option is to provide a register as well
- * as a memory address, that way you can directly transfer from any register to
- * any memory.
- */
-
 void cycle(void)
 {
 	// update present state
@@ -95,10 +85,6 @@ void cycle(void)
 			break;
 		case ALU_COMP:
 			// run ALU computation
-			/**
-			 * @todo Think of a better way to do this. See lecture slides on
-			 *  accumulator ISA.
-			 */
 			alu_compute();
 			next_s = INC_PC;
 			break;

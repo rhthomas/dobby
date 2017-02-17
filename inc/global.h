@@ -12,10 +12,8 @@
 
 // address bus and data bus are 16 bits wide
 struct {
-	// data bus
-	uint16_t data;
-	// address bus
-	uint16_t addr;
+	uint16_t data;	// data bus
+	uint16_t addr;	// address bus
 } bus;
 
 #endif // _GLOBAL_H

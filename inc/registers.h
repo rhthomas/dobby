@@ -25,9 +25,9 @@
  * Contains program counter, instruction register and accumulator.
  */
 struct {
-	uint16_t pc; // program counter
-	uint16_t ir; // instruction register
-	uint16_t ac; // accumulator
+	uint16_t pc;	// program counter
+	uint16_t ir;	// instruction register
+	uint16_t ac;	// accumulator
 } regs;
 
 #endif // _REGISTERS_H

@@ -26,3 +26,22 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
     ├── dobby.c
     └── memory.c
 ```
+
+## Output
+
+```
+Clock: 1
+
+States  pres:   FETCH         +----------+
+        next:   DECODE     pc |  0x0000  |
+                              +----------+
+Bus     addr:   0x0000     ir |  0x0041  |
+        data:   0x0041        +----------+
+                           ac |  0x0000  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0000
+        task:   ADD
+
+Memory  addr:   0x0000
+        data:   0x0041
+```
