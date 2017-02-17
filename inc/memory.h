@@ -16,6 +16,9 @@
 
 #define MEM_SIZE 256
 
+// memory array
+uint16_t memory[MEM_SIZE];
+
 /**
  * @brief Writes data from bus to address in memory.
  */

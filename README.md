@@ -1,3 +1,7 @@
+```diff
+- Not currently deployable. Under active development.
+```
+
 # dobby
 
 University of Southampton second year ELEC2204 Computer Engineering coursework.

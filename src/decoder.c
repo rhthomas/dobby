@@ -3,12 +3,10 @@
  * @author Rhys Thomas (rt8g15@soton.ac.uk)
  * @created 2017-02-10
  * @brief Instruction decoder.
- * @todo Implement simple state machine.
+ * @todo Figure out how you're going to interface with the ALU.
  *
  * Instructions are stored in the instruction register, ir. Top 4 bits
- * are opcodes, middle 6 are operand A and lower 6 bits are operand B. If it
- * an address is required then that is stored in addr which consists of all
- * the bits from the ir other than the opcodes.
+ * are opcodes, middle 6 are operand A and lower 6 bits are operand B.
  */
 
 #include "decoder.h"
@@ -36,53 +34,64 @@ void decode(void) {
 			alu_task = opcode;
 			alu_opA  = a;
 			alu_opB  = b;
-			// next, run an ALU computation
+			// run an ALU computation
 			next_s = ALU_COMP;
 			break;
 		case LOAD:
-			// load data from rom[addr] to data bus
-			read_rom(c);
+			// write data in memory to bus
+			mem_read();
 			// increment program counter
 			next_s = INC_PC;
 			break;
 		case WRTE:
-			// write accumulator to address c
-			bus.data = regs.ac;
+			// write data bus to memory
+			mem_write();
+			// increment program counter
 			next_s = INC_PC;
 			break;
 		case JUMP:
 			// jump to address in ROM
 			regs.pc = c;
 			// get next instruction
-			next_s = GET_INST;
+			next_s = FETCH;
 			break;
 	}
 }
 
-void update_cpu(void)
+/** On the subject of LOAD and WRTE functionality.
+ * Typically they go from a register to memory and vice versa. Which register
+ * gets read or written to is a function of your arch. In a pure memory-acc
+ * type WRTE takes ac, puts it on the bus, then puts the bus to memory based on
+ * address in the address bus. The other option is to provide a register as well
+ * as a memory address, that way you can directly transfer from any register to
+ * any memory.
+ */
+
+void cycle(void)
 {
+	// update present state
 	present_s = next_s;
 	switch(present_s) {
 		case DECODE:
 			// decode instruction register
 			decode();
-			// next_s are defined inside decode case statements
+			// next_s is defined inside decode case statements
 			break;
-		case GET_INST:
+		case FETCH:
 			// get next instruction
 			bus.addr = regs.pc;
 			// read data in memory at bus.addr to bus.data
 			mem_read();
-			next_s = SET_INST;
-			break;
-		case SET_INST:
 			// set instruction register to value of data bus
 			regs.ir = bus.data;
+			// now decode fetched message
+			next_s = DECODE;
 			break;
 		case INC_PC:
 			// increment the program counter
 			regs.pc++;
-			next_s = GET_INST;
+			// fetch next instruction
+			next_s = FETCH;
 			break;
 		case ALU_COMP:
 			// run ALU computation

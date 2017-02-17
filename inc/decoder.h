@@ -19,8 +19,8 @@
 #include "registers.h"	// access to ac and ir
 #include "global.h"		// access to data bus
 
-// do I need to #define all the states?
-uint8_t present_s, next_s;
+// present and next state variables
+enum states {DECODE, FETCH, INC_PC, ALU_COMP} present_s, next_s;
 
 /**
  * @brief Decodes instruction register.
@@ -30,6 +30,6 @@ void decode(void);
 /**
  * @brief Emulates fetch-execute cycle.
  */
-void update_cpu(void);
+void cycle(void);
 
 #endif // _DECODER_H

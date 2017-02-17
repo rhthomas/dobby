@@ -7,9 +7,6 @@
 
 #include "memory.h"
 
-// memory array
-uint16_t memory[MEM_SIZE];
-
 void mem_write(void)
 {
 	// write data on bus to memory
