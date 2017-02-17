@@ -6,13 +6,13 @@ HEADERS := inc/
 
 # compiler options
 CC     = gcc
-CFLAGS = -Wall -std=c99 -I $(HEADERS)
+CFLAGS = -Wall -std=c99 -I $(HEADERS) -lncurses
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJECTS)
-	$(CC) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
 	rm -rf $(OBJECTS) $(TARGET)

@@ -7,6 +7,8 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <ncurses.h>
+
 #include "alu.h"
 #include "decoder.h"
 #include "global.h"
@@ -14,29 +16,58 @@
 #include "opcodes.h"
 #include "registers.h"
 
-#define RESET "\033[0m"
-#define BOLD  "\033[1m"
+int clock = 0;
+
+void print_regs(void)
+{
+	for(int y=1; y<8; y++) {
+		if(y%2) {
+			mvprintw(y, 30, "+----------+");
+		} else {
+			switch(y) {
+				case 2:
+					mvprintw(y, 27, "pc |  0x%04x  |", regs.pc);
+					break;
+				case 4:
+					mvprintw(y, 27, "ir |  0x%04x  |", regs.ir);
+					break;
+				case 6:
+					mvprintw(y, 27, "ac |  0x%04x  |", regs.ac);
+					break;
+			}
+		}
+	}
+}
 
 /**
  * @brief Prints debug info such as register values, instructions to execute etc.
  */
 void print_debug(void)
 {
-	// states
-	printf("\t%sStates%s\n", BOLD, RESET);
-	printf("\tpres: 0x%04x, next: 0x%04x\n", present_s, next_s);
+	// current clock ticks
+	attron(A_STANDOUT);
+	mvprintw(0, 0, "Clock: %d\n",clock++);
+	attroff(A_STANDOUT);
+
+	// opcode
+	mvprintw(1, 0, "Opcode");
+	// current state
+	mvprintw(3, 0, "States");
+	mvprintw(3, 8, "pres:\t0x%04x", present_s);
+	mvprintw(4, 8, "next:\t0x%04x", next_s);
 	// bus
-	printf("\t%sBus%s\n", BOLD, RESET);
-	printf("\taddr: 0x%04x, data: 0x%04x\n", bus.addr, bus.data);
+	mvprintw(6, 0, "Bus");
+	mvprintw(6, 8, "addr:\t0x%04x", bus.addr);
+	mvprintw(7, 8, "data:\t0x%04x", bus.data);
 	// alu
-	printf("\t%sALU%s\n", BOLD, RESET);
-	printf("\topA: 0x%04x, opB: 0x%04x, task: 0x%04x\n", alu_opA, alu_opB, alu_task);
-	// registers
-	printf("\t%sRegisters%s\n", BOLD, RESET);
-	printf("\tpc: 0x%04x, ir: 0x%04x, ac: 0x%04x\n", regs.pc, regs.ir, regs.ac);
+	mvprintw(9, 0, "ALU");
+	mvprintw(9, 8, "opA:\t0x%04x", alu_opA);
+	mvprintw(10, 8, "opB:\t0x%04x", alu_opB);
+	mvprintw(11, 8, "task:\t0x%04x", alu_task);
+	// regs
+	print_regs();
 	// memory
-	printf("\t%sMemory%s\n", BOLD, RESET);
-	printf("\tmemory[0x%04x]: 0x%04x\n", bus.addr, memory[bus.addr]);
+	mvprintw(13, 0, "memory[0x%04x]: 0x%04x\n", bus.addr, memory[bus.addr]);
 }
 
 /**
@@ -44,17 +75,17 @@ void print_debug(void)
  */
 int main(void)
 {
-	int clock = 0;
+	initscr();
 
 	// initialise next state to fetch
 	next_s = FETCH;
 
 	for(;;) {
-		clock++;
-		printf("clock: %d\n",clock);
 		print_debug();
 		// update when enter key has been pressed
-		getchar();
+		getch();
 	}
+	endwin();
+
 	return 0;
 }
