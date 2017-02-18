@@ -20,7 +20,7 @@
 #include "global.h"		// access to data bus
 
 // present and next state variables
-enum states {DECODE, FETCH, INC_PC, ALU_COMP} present_s, next_s;
+enum {DECODE, FETCH, INC_PC, ALU_COMP} present_s, next_s;
 
 /**
  * @brief Decodes instruction register.

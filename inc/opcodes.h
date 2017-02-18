@@ -10,10 +10,6 @@
 #ifndef _OPCODES_H
 #define _OPCODES_H
 
-/**
- * @todo Maybe do this with enum?
- */
-
 // data processing
 #define ADD  0x0
 #define SUB  0x1
@@ -25,7 +21,7 @@
 #define ROTL 0x7
 
 // data storage (read/write)
-#define LOAD 0x8
+#define LOAD 0x8 // need to write this
 #define WRTE 0x9
 
 // program flow control

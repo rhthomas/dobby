@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include <string.h>
+#include <string.h>		// required for memcpy()
 #include <ncurses.h>
 
 #include "alu.h"
@@ -16,8 +16,6 @@
 #include "memory.h"
 #include "opcodes.h"
 #include "registers.h"
-
-int clock = 0;
 
 /**
  * @brief Prints the register graphic to the terminal.

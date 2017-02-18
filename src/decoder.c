@@ -30,20 +30,30 @@ void decode(void) {
 		case ROTR:
 		case ROTL:
 			// set ALU parameters
-			alu_task = opcode;
-			alu_opA  = memory[a];
-			alu_opB  = memory[b];
+			bus.data = opcode;
+			alu_task = bus.data;
+			// get alu_opA from location a in memory
+			bus.addr = a;
+			mem_read();
+			alu_opA = bus.data;
+			// get alu_opB from location b in memory
+			bus.addr = b;
+			mem_read();
+			alu_opB = bus.data;
 			// run an ALU computation
 			next_s = ALU_COMP;
 			break;
 		case LOAD:
-			// DO THIS!!!!!
+			/**
+			 * @todo Write this operation. Usually the opposite of WRTE.
+			 */
 			// increment program counter
 			next_s = INC_PC;
 			break;
 		case WRTE:
-			// write ac to address in memory
-			memory[c] = regs.ac;
+			// put accumulator on the bus
+			bus.data = regs.ac;
+			mem_write();
 			// increment program counter
 			next_s = INC_PC;
 			break;
