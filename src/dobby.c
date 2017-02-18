@@ -85,6 +85,26 @@ void print_debug(void)
 	mvprintw(13, 8, "data:\t0x%04x", memory[bus.addr]);
 }
 
+/**
+ * @brief Simple program, adds data in addr 1 to addr 2 then writes back to
+ *  addr 1.
+ *
+ * 0: JMP 3
+ * 1: 0
+ * 2: 1
+ * 3: ADD 1 2
+ * 4: STO 1
+ * 5: JMP 3
+ */
+static uint16_t program[] = {
+	JUMP << 12 | 3,
+	0,
+	1,
+	ADD << 12 | 1 << 6 | 2,
+	WRTE << 12 | 1,
+	JUMP << 12 | 3
+};
+
 int main(void)
 {
 	initscr();
@@ -94,8 +114,8 @@ int main(void)
 	// initialise next state to fetch
 	next_s = FETCH;
 
-	// add 1 and 1
-	memory[0]=0x0041;
+	// load in program
+	memcpy(memory, program, sizeof(program));
 
 	while(exit != 'q') {
 		print_debug();

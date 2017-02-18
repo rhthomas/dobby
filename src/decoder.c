@@ -31,20 +31,19 @@ void decode(void) {
 		case ROTL:
 			// set ALU parameters
 			alu_task = opcode;
-			alu_opA  = a;
-			alu_opB  = b;
+			alu_opA  = memory[a];
+			alu_opB  = memory[b];
 			// run an ALU computation
 			next_s = ALU_COMP;
 			break;
 		case LOAD:
-			// write data in memory to bus
-			mem_read();
+			// DO THIS!!!!!
 			// increment program counter
 			next_s = INC_PC;
 			break;
 		case WRTE:
-			// write data bus to memory
-			mem_write();
+			// write ac to address in memory
+			memory[c] = regs.ac;
 			// increment program counter
 			next_s = INC_PC;
 			break;

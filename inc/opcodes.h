@@ -10,6 +10,10 @@
 #ifndef _OPCODES_H
 #define _OPCODES_H
 
+/**
+ * @todo Maybe do this with enum?
+ */
+
 // data processing
 #define ADD  0x0
 #define SUB  0x1

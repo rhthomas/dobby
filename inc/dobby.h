@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
+#include <string.h>
 #include <ncurses.h>
 
 #include "alu.h"
