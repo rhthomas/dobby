@@ -53,6 +53,7 @@ void decode(void) {
 		case WRTE:
 			// put accumulator on the bus
 			bus.data = regs.ac;
+			bus.addr = c;
 			mem_write();
 			// increment program counter
 			next_s = INC_PC;
