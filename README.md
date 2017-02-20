@@ -13,12 +13,12 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
 ├── inc
 │   ├── alu.h
 │   ├── decoder.h
+│   ├── dobby.h
 │   ├── global.h
 │   ├── memory.h
 │   ├── opcodes.h
 │   └── registers.h
 ├── makefile
-├── newh
 ├── README.md
 └── src
     ├── alu.c

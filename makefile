@@ -1,3 +1,5 @@
+# note, if headers change you will need to run make clean then make
+
 TARGET = dobby
 
 SOURCES := $(shell find * -name *.c)
