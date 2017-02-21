@@ -1,0 +1,180 @@
+Clock: 0
+
+States  pres:   DECODE        +----------+
+        next:   FETCH      pc |  0x0000  |
+                              +----------+
+Bus     addr:   0x0000     ir |  0x0000  |
+        data:   0x0000        +----------+
+                           ac |  0x0000  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0000
+        task:   ADD
+
+Memory  addr:   0x0000
+        data:   0xa003
+
+Clock: 1
+
+States  pres:   FETCH         +----------+
+        next:   DECODE     pc |  0x0000  |
+                              +----------+
+Bus     addr:   0x0000     ir |  0xa003  |
+        data:   0xa003        +----------+
+                           ac |  0x0000  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0000
+        task:   ADD
+
+Memory  addr:   0x0000
+        data:   0xa003
+
+Clock: 2
+
+States  pres:   DECODE        +----------+
+        next:   FETCH      pc |  0x0003  |
+                              +----------+
+Bus     addr:   0x0000     ir |  0xa003  |
+        data:   0xa003        +----------+
+                           ac |  0x0000  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0000
+        task:   ADD
+
+Memory  addr:   0x0000
+        data:   0xa003
+
+Clock: 3
+
+States  pres:   FETCH         +----------+
+        next:   DECODE     pc |  0x0003  |
+                              +----------+
+Bus     addr:   0x0003     ir |  0x0042  |
+        data:   0x0042        +----------+
+                           ac |  0x0000  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0000
+        task:   ADD
+
+Memory  addr:   0x0003
+        data:   0x0042
+
+Clock: 4
+
+States  pres:   DECODE        +----------+
+        next:   ALU_COMP   pc |  0x0003  |
+                              +----------+
+Bus     addr:   0x0002     ir |  0x0042  |
+        data:   0x0001        +----------+
+                           ac |  0x0000  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0002
+        data:   0x0001
+
+Clock: 5
+
+States  pres:   ALU_COMP      +----------+
+        next:   INC_PC     pc |  0x0003  |
+                              +----------+
+Bus     addr:   0x0002     ir |  0x0042  |
+        data:   0x0001        +----------+
+                           ac |  0x0001  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0002
+        data:   0x0001
+
+Clock: 6
+
+States  pres:   INC_PC        +----------+
+        next:   FETCH      pc |  0x0004  |
+                              +----------+
+Bus     addr:   0x0002     ir |  0x0042  |
+        data:   0x0001        +----------+
+                           ac |  0x0001  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0002
+        data:   0x0001
+
+Clock: 7
+
+States  pres:   FETCH         +----------+
+        next:   DECODE     pc |  0x0004  |
+                              +----------+
+Bus     addr:   0x0004     ir |  0x9001  |
+        data:   0x9001        +----------+
+                           ac |  0x0001  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0004
+        data:   0x9001
+
+Clock: 8
+
+States  pres:   DECODE        +----------+
+        next:   INC_PC     pc |  0x0004  |
+                              +----------+
+Bus     addr:   0x0001     ir |  0x9001  |
+        data:   0x0001        +----------+
+                           ac |  0x0001  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0001
+        data:   0x0001
+
+Clock: 9
+
+States  pres:   INC_PC        +----------+
+        next:   FETCH      pc |  0x0005  |
+                              +----------+
+Bus     addr:   0x0001     ir |  0x9001  |
+        data:   0x0001        +----------+
+                           ac |  0x0001  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0001
+        data:   0x0001
+
+Clock: 10
+
+States  pres:   FETCH         +----------+
+        next:   DECODE     pc |  0x0005  |
+                              +----------+
+Bus     addr:   0x0005     ir |  0xa003  |
+        data:   0xa003        +----------+
+                           ac |  0x0001  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0005
+        data:   0xa003
+
+Clock: 11
+
+States  pres:   DECODE        +----------+
+        next:   FETCH      pc |  0x0003  |
+                              +----------+
+Bus     addr:   0x0005     ir |  0xa003  |
+        data:   0xa003        +----------+
+                           ac |  0x0001  |
+ALU     opA:    0x0000        +----------+
+        opB:    0x0001
+        task:   ADD
+
+Memory  addr:   0x0005
+        data:   0xa003
+

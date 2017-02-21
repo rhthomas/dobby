@@ -91,12 +91,12 @@ void print_debug(void)
  * @brief Simple program, adds data in addr 1 to addr 2 then writes back to
  *  addr 1.
  *
- * 0: JMP 3
+ * 0: JUMP 3
  * 1: 0
  * 2: 1
- * 3: ADD 1 2
- * 4: STO 1
- * 5: JMP 3
+ * 3: ADD  1 2
+ * 4: WRTE 1
+ * 5: JUMP 3
  */
 static uint16_t program[] = {
 	JUMP << 12 | 3,
