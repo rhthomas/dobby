@@ -19,6 +19,8 @@
 #include "registers.h"	// access to ac and ir
 #include "global.h"		// access to data bus
 
+char *opcode_print;
+
 // present and next state variables
 enum {DECODE, FETCH, INC_PC} present_s, next_s;
 

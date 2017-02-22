@@ -33,28 +33,14 @@ void print_regs(void)
 void get_state(void)
 {
     switch(present_s) {
-        case 0000: mvprintw(2, 8, "pres:\tDECODE  "); break;
-        case 0001: mvprintw(2, 8, "pres:\tFETCH   "); break;
-        case 0002: mvprintw(2, 8, "pres:\tINC_PC  "); break;
+        case 0000: mvprintw(4, 8, "pres:\tDECODE  "); break;
+        case 0001: mvprintw(4, 8, "pres:\tFETCH   "); break;
+        case 0002: mvprintw(4, 8, "pres:\tINC_PC  "); break;
     }
     switch(next_s) {
-        case 0000: mvprintw(3, 8, "next:\tDECODE  "); break;
-        case 0001: mvprintw(3, 8, "next:\tFETCH   "); break;
-        case 0002: mvprintw(3, 8, "next:\tINC_PC  "); break;
-    }
-}
-
-void get_task(void)
-{
-    switch(alu_task) {
-        case 0000: mvprintw(10, 8, "task:\tADD "); break;
-        case 0001: mvprintw(10, 8, "task:\tSUB "); break;
-        case 0002: mvprintw(10, 8, "task:\tAND "); break;
-        case 0003: mvprintw(10, 8, "task:\tOR  "); break;
-        case 0004: mvprintw(10, 8, "task:\tNOT "); break;
-        case 0005: mvprintw(10, 8, "task:\tXOR "); break;
-        case 0006: mvprintw(10, 8, "task:\tROTR"); break;
-        case 0007: mvprintw(10, 8, "task:\tROTL"); break;
+        case 0000: mvprintw(5, 8, "next:\tDECODE  "); break;
+        case 0001: mvprintw(5, 8, "next:\tFETCH   "); break;
+        case 0002: mvprintw(5, 8, "next:\tINC_PC  "); break;
     }
 }
 
@@ -65,23 +51,25 @@ void print_debug(void)
     mvprintw(0, 0, "Clock: %d\n",clock++);
     attroff(A_STANDOUT);
 
+	// opcode
+	mvprintw(2, 0, "Opcode:");
+	mvprintw(2, 8, "%s", opcode_print);
     // current state
-    mvprintw(2, 0, "States");
+    mvprintw(4, 0, "State");
     get_state();
     // bus
-    mvprintw(5, 0, "Bus");
-    mvprintw(5, 8, "addr:\t0x%04x", bus.addr);
-    mvprintw(6, 8, "data:\t0x%04x", bus.data);
+    mvprintw(7, 0, "Bus");
+    mvprintw(7, 8, "addr:\t0x%04x", bus.addr);
+    mvprintw(8, 8, "data:\t0x%04x", bus.data);
     // alu
-    mvprintw(8, 0, "ALU");
-    mvprintw(8, 8, "input:\t0x%04x", alu_input);
-    get_task();
+    mvprintw(10, 0, "ALU");
+    mvprintw(10, 8, "input:\t0x%04x", alu_input);
     // regs
     print_regs();
     // memory
-    mvprintw(10, 0, "Memory");
-    mvprintw(10, 8, "addr:\t0x%04x", bus.addr);
-    mvprintw(11, 8, "data:\t0x%04x", memory[bus.addr]);
+    mvprintw(12, 0, "Memory");
+    mvprintw(12, 8, "addr:\t0x%04x", bus.addr);
+    mvprintw(13, 8, "data:\t0x%04x", memory[bus.addr]);
 }
 
 /**
@@ -96,6 +84,7 @@ void print_debug(void)
  * 4: WRTE 1	// write accumulator to 0x01
  * 5: JUMP 3	// jump back to 0x03, reload 0x01 to accumulator
  */
+/**
 static uint16_t program[] = {
 	JUMP << 12 | 3,
 	0,
@@ -104,6 +93,26 @@ static uint16_t program[] = {
 	ADD  << 12 | 2,
 	WRTE << 12 | 1,
 	JUMP << 12 | 3
+};
+*/
+// answer should be 45
+static uint16_t program[] = {
+	JUMP << 12 | 6,
+	5,
+	4,
+	3,
+	2,
+	1,
+	LOAD << 12 | 1,
+	SUB  << 12 | 2,
+	WRTE << 12 | 1,
+	LOAD << 12 | 4,
+	DIV  << 12 | 5,
+	ADD  << 12 | 3,
+	MUL  << 12 | 1,
+	WRTE << 12 | 1,
+	NOP  << 12,
+	JUMP << 12 | 14
 };
 
 int main(void)

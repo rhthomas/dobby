@@ -19,14 +19,14 @@ void decode(void) {
 	uint16_t arg = regs.ir & 0x0FFF;
 
 	switch(opcode) {
-		case ADD:
-		case SUB:
-		case AND:
-		case OR:
-		case NOT:
-		case XOR:
-		case ROTR:
-		case ROTL:
+		case ADD: opcode_print = "ADD   ";
+		case SUB: opcode_print = "SUB   ";
+		case AND: opcode_print = "AND   ";
+		case OR:  opcode_print = "OR    ";
+		case NOT: opcode_print = "NOT   ";
+		case XOR: opcode_print = "XOR   ";
+		case MUL: opcode_print = "MUL   ";
+		case DIV: opcode_print = "DIV   ";
 			// set ALU parameters
 			bus.data = opcode;
 			// send operation to ALU task
@@ -43,6 +43,7 @@ void decode(void) {
 			next_s = INC_PC;
 			break;
 		case LOAD:
+			opcode_print = "LOAD  ";
 			// get address from instruction
 			bus.addr = arg;
 			// read data at address to data bus
@@ -53,6 +54,7 @@ void decode(void) {
 			next_s = INC_PC;
 			break;
 		case WRTE:
+			opcode_print = "WRTE  ";
 			// write accumulator content to the data bus
 			read_ac();
 			// set address bus to instruction argument
@@ -63,10 +65,16 @@ void decode(void) {
 			next_s = INC_PC;
 			break;
 		case JUMP:
+			opcode_print = "JUMP  ";
 			// jump to address in ROM
 			regs.pc = arg;
 			// get next instruction
 			next_s = FETCH;
+			break;
+		case NOP:
+			opcode_print = "NOP   ";
+			// no operation, just increase program coutner
+			next_s = INC_PC;
 			break;
 	}
 }

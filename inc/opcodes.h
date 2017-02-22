@@ -17,15 +17,16 @@
 #define OR   0x3
 #define NOT  0x4
 #define XOR  0x5
-#define ROTR 0x6
-#define ROTL 0x7
+#define DIV  0x6
+#define MUL  0x7
 
 // data storage (read/write)
-#define LOAD 0x8 // need to write this
+#define LOAD 0x8
 #define WRTE 0x9
 
 // program flow control
 #define JUMP 0xA
+#define NOP  0xB
 
 // data movement (might not even need this)
 
