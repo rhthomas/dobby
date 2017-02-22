@@ -4,8 +4,10 @@
  * @created 2017-02-10
  * @brief Instruction decoder.
  *
- * Instructions are stored in the instruction register, ir. Top 4 bits
- * are opcodes, middle 6 are operand A and lower 6 bits are operand B.
+ * The operation of the CPU is a simple state machine. We start by fetching
+ * the instruction at the address in memory which is defined by the program
+ * counter. Then decode the instruction and execute it accordingly. Finally
+ * the program counter and repeat.
  */
 
 #include "decoder.h"
@@ -13,12 +15,8 @@
 void decode(void) {
 	// 0b1111.0000.0000.0000
 	uint8_t opcode = (regs.ir & 0xF000) >> 12;
-	// 0b0000.1111.1100.0000
-	uint8_t a = (regs.ir & 0x0FC0) >> 6;
-	// 0b0000.0000.0011.1111
-	uint8_t b = regs.ir & 0x003F;
 	// 0b0000.1111.1111.1111
-	uint16_t c = regs.ir & 0x0FFF;
+	uint16_t arg = regs.ir & 0x0FFF;
 
 	switch(opcode) {
 		case ADD:
@@ -31,36 +29,42 @@ void decode(void) {
 		case ROTL:
 			// set ALU parameters
 			bus.data = opcode;
+			// send operation to ALU task
 			alu_task = bus.data;
-			// get alu_opA from location a in memory
-			bus.addr = a;
+			// get address from instruction argument
+			bus.addr = arg;
+			// read data at memory[addr] to data bus
 			mem_read();
-			alu_opA = bus.data;
-			// get alu_opB from location b in memory
-			bus.addr = b;
-			mem_read();
-			alu_opB = bus.data;
+			// ALU input is set to data bus
+			alu_input = bus.data;
 			// run an ALU computation
-			next_s = ALU_COMP;
+			alu_compute();
+			// increment program counter
+			next_s = INC_PC;
 			break;
 		case LOAD:
-			/**
-			 * @todo Write this operation. Usually the opposite of WRTE.
-			 */
+			// get address from instruction
+			bus.addr = arg;
+			// read data at address to data bus
+			mem_read();
+			// set accumulator to the value on the data bus
+			regs.ac = bus.data;
 			// increment program counter
 			next_s = INC_PC;
 			break;
 		case WRTE:
 			// put accumulator on the bus
 			bus.data = regs.ac;
-			bus.addr = c;
+			// set address bus to instruction argument
+			bus.addr = arg;
+			// write data bus to address in memory
 			mem_write();
 			// increment program counter
 			next_s = INC_PC;
 			break;
 		case JUMP:
 			// jump to address in ROM
-			regs.pc = c;
+			regs.pc = arg;
 			// get next instruction
 			next_s = FETCH;
 			break;
@@ -92,11 +96,6 @@ void cycle(void)
 			regs.pc++;
 			// fetch next instruction
 			next_s = FETCH;
-			break;
-		case ALU_COMP:
-			// run ALU computation
-			alu_compute();
-			next_s = INC_PC;
 			break;
 	}
 }

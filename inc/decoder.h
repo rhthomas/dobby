@@ -13,14 +13,14 @@
 #ifndef _DECODER_H
 #define _DECODER_H
 
-#include "alu.h"		// alu_compute() alu_task alu_opA alu_opB
+#include "alu.h"		// alu_compute() alu_task alu_input
 #include "memory.h"		// read_rom() read_ram() write_ram()
 #include "opcodes.h"	// defines opcodes
 #include "registers.h"	// access to ac and ir
 #include "global.h"		// access to data bus
 
 // present and next state variables
-enum {DECODE, FETCH, INC_PC, ALU_COMP} present_s, next_s;
+enum {DECODE, FETCH, INC_PC} present_s, next_s;
 
 /**
  * @brief Decodes instruction register.

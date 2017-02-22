@@ -12,14 +12,14 @@
 #include "registers.h"	// access to accumulator
 #include "global.h"		// access to data and address bus
 
-uint8_t alu_opA, alu_opB;	// inputs to the alu
-uint8_t alu_task;			// alu operations
+uint8_t alu_input;	// input to the alu
+uint8_t alu_task;	// alu operations
 
 /**
  * @brief Sets accumulator to result of ALU operation.
  *
- * Runs ALU computation on opA and opB based on the opcode provided and writes
- * the result to the accumulator.
+ * Runs ALU computation on input to ALU and accumulator based on the opcode
+ * provided and writes the result back to the accumulator.
  */
 void alu_compute(void);
 
