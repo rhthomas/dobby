@@ -1,7 +1,7 @@
 /**
- * @file registers.h
+ * @file registers.c
  * @author Rhys Thomas (rt8g15@soton.ac.uk)
- * @created 2017-02-10
+ * @created 2017-02-22
  * @brief Registers in CPU.
  *
  * +----------+
@@ -30,14 +30,14 @@ struct {
 	uint16_t ac;	// accumulator
 } regs;
 
-/**
- * @brief Reads value in the accumulator to the data bus.
- */
-void read_ac(void);
+void read_ac(void)
+{
+	bus.data = regs.ac;
+}
 
-/**
- * @brief Writes data bus contents to the accumulator.
- */
-void write_ac(void);
+void write_ac(void)
+{
+	regs.ac = bus.data;
+}
 
 #endif // _REGISTERS_H

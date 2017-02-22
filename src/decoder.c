@@ -48,13 +48,13 @@ void decode(void) {
 			// read data at address to data bus
 			mem_read();
 			// set accumulator to the value on the data bus
-			regs.ac = bus.data;
+			write_ac();
 			// increment program counter
 			next_s = INC_PC;
 			break;
 		case WRTE:
-			// put accumulator on the bus
-			bus.data = regs.ac;
+			// write accumulator content to the data bus
+			read_ac();
 			// set address bus to instruction argument
 			bus.addr = arg;
 			// write data bus to address in memory
