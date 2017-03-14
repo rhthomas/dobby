@@ -27,7 +27,10 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
 
 ## Example assembler
 
-This simple test program initialises the values of `0` and `1` to the memory in addresses 0x01 and 0x02. First the system jumps to 0x03, does an addition with what's in address 0x01 and 0x02, writes back to address 0x01 then repeats, thus repeating the +1 operation with each loop.
+This simple test program initialises the values of `0` and `1` to the memory in
+addresses 0x01 and 0x02. First the system jumps to 0x03, does an addition with
+what's in address 0x01 and 0x02, writes back to address 0x01 then repeats, thus
+repeating the +1 operation with each loop.
 
 ```
 JUMP 3
@@ -40,9 +43,14 @@ JUMP 3
 
 ## Output
 
-`dobby.c` uses and ncurses interface to display the current state of the cpu, values on the data/address bus, inputs and operations passed to the ALU, data in particular addresses in memory as well as the data stored in the program counter, intruction register and accumulator.
+`dobby.c` uses and ncurses interface to display the current state of the cpu,
+values on the data/address bus, inputs and operations passed to the ALU, data
+in particular addresses in memory as well as the data stored in the program
+counter, instruction register and accumulator.
 
-By pressing `<enter>` (actually, any key besides 'q') the system will step through to the next state of operation. This is to help debug the operation of the CPU.
+By pressing `<enter>` (actually, any key besides 'q') the system will step
+through to the next state of operation. This is to help debug the operation of
+the CPU.
 
 ```
 Clock: 1
@@ -61,4 +69,5 @@ Memory  addr:   0x0000
         data:   0x0041
 ```
 
-An example of the full stepped sequence for one addition cycle is shown in the `output.txt` file.
+An example of the full stepped sequence for one addition cycle is shown in the
+`output.txt` file.

@@ -1,15 +1,15 @@
 /**
- * @file dobby.c
- * @author Rhys Thomas (rt8g15@soton.ac.uk)
- * @created 2017-02-10
- * @brief Dobby is a free emulator. Master gave Dobby his own architecture.
- */
+    \file dobby.c
+    \author Rhys Thomas (rt8g15@soton.ac.uk)
+    \created 2017-02-10
+    \brief Dobby is a free emulator. Master gave Dobby his own architecture.
+*/
 
 #include "dobby.h"
 
 int clock = 0;
 
-void print_regs(void)
+void print_regs()
 {
     for(int y=2; y<9; y++) {
         if(!(y%2)) {
@@ -30,7 +30,7 @@ void print_regs(void)
     }
 }
 
-void get_state(void)
+void get_state()
 {
     switch(present_s) {
         case 0000: mvprintw(4, 8, "pres:\tDECODE  "); break;
@@ -44,16 +44,16 @@ void get_state(void)
     }
 }
 
-void print_debug(void)
+void print_debug()
 {
     // current clock ticks
     attron(A_STANDOUT);
     mvprintw(0, 0, "Clock: %d\n",clock++);
     attroff(A_STANDOUT);
 
-	// opcode
-	mvprintw(2, 0, "Opcode:");
-	mvprintw(2, 8, "%s", opcode_print);
+    // opcode
+    mvprintw(2, 0, "Opcode:");
+    mvprintw(2, 8, "%s", opcode_print);
     // current state
     mvprintw(4, 0, "State");
     get_state();
@@ -76,65 +76,61 @@ void print_debug(void)
  * @brief Simple program, adds data in addr 1 to addr 2 then writes back to
  *  addr 1.
  *
- * 0: JUMP 3	// jump to instruction 3
+ * 0: JUMP 3    // jump to instruction 3
  * 1: 0
  * 2: 1
- * 3: LOAD 1	// load [0x01] into accumulator
- * 3: ADD  2	// add [0x02] to what is in accumulator
- * 4: WRTE 1	// write accumulator to 0x01
- * 5: JUMP 3	// jump back to 0x03, reload 0x01 to accumulator
+ * 3: LOAD 1    // load [0x01] into accumulator
+ * 3: ADD  2    // add [0x02] to what is in accumulator
+ * 4: WRTE 1    // write accumulator to 0x01
+ * 5: JUMP 3    // jump back to 0x03, reload 0x01 to accumulator
  */
 /**
 static uint16_t program[] = {
-	JUMP << 12 | 3,
-	0,
-	1,
-	LOAD << 12 | 1,
-	ADD  << 12 | 2,
-	WRTE << 12 | 1,
-	JUMP << 12 | 3
+    JUMP << 12 | 3,
+    0,
+    1,
+    LOAD << 12 | 1,
+    ADD  << 12 | 2,
+    WRTE << 12 | 1,
+    JUMP << 12 | 3
 };
 */
 // answer should be 45
 static uint16_t program[] = {
-	JUMP << 12 | 6,
-	5,
-	4,
-	3,
-	2,
-	1,
-	LOAD << 12 | 1,
-	SUB  << 12 | 2,
-	WRTE << 12 | 1,
-	LOAD << 12 | 4,
-	DIV  << 12 | 5,
-	ADD  << 12 | 3,
-	MUL  << 12 | 1,
-	WRTE << 12 | 1,
-	NOP  << 12,
-	JUMP << 12 | 14
+    JUMP << 12 | 6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    LOAD << 12 | 1,
+    SUB  << 12 | 2,
+    WRTE << 12 | 1,
+    LOAD << 12 | 4,
+    DIV  << 12 | 5,
+    ADD  << 12 | 3,
+    MUL  << 12 | 1,
+    WRTE << 12 | 1,
+    NOP  << 12,
+    JUMP << 12 | 14
 };
 
-int main(void)
+int main()
 {
-	initscr();
+    initscr();
 
-	char exit;
+    // initialise next state to fetch
+    next_s = FETCH;
 
-	// initialise next state to fetch
-	next_s = FETCH;
+    // load in program
+    memcpy(memory, program, sizeof(program));
 
-	// load in program
-	memcpy(memory, program, sizeof(program));
+    // loop until 'q' is pressed
+    while(getch() != 'q') {
+        print_debug();
+        cycle();
+    }
+    endwin();
 
-	while(exit != 'q') {
-		print_debug();
-		cycle();
-		// update when enter key has been pressed
-		// exit when q is pressed
-		exit = getch();
-	}
-	endwin();
-
-	return 0;
+    return 0;
 }

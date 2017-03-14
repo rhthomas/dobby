@@ -1,5 +1,6 @@
-PROJECT_NAME = "Dobby"
-PROJECT_BRIEF = "University of Southampton second year ELEC2204 Computer Engineering coursework."
-OUTPUT_DIRECTORY = doxygen
-RECURSIVE = yes
+PROJECT_NAME           = "Dobby"
+PROJECT_BRIEF          = "University of Southampton second year ELEC2204 \
+                         Computer Engineering coursework."
+OUTPUT_DIRECTORY       = doxygen
+RECURSIVE              = yes
 USE_MDFILE_AS_MAINPAGE = README.md
