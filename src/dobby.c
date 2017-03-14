@@ -111,8 +111,7 @@ static uint16_t program[] = {
     ADD  << 12 | 3,
     MUL  << 12 | 1,
     WRTE << 12 | 1,
-    NOP  << 12,
-    JUMP << 12 | 14
+    JUMP << 12 | 1
 };
 
 int main()

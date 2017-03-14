@@ -1,19 +1,17 @@
 ;sample program taken from lecture slides
 ;x=(A-B)*(C+D/E)
-;will need to create MUL, DIV and NOP opcodes
-0:	JUMP 6
-1:	A
-2:	B
-3:	C
-4:	D
-5:	E
-6:	LOAD 1	;load A into acc
-7:	SUB  2	;acc = acc - B
-8:	WRTE 1	;write acc back to A
-9:	LOAD 4	;load D into acc
-10:	DIV  5	;acc = acc/E
-11:	ADD  3	;acc = acc + C
-12:	MUL  1	;acc = acc*A
-13:	WRTE 1	;write final answer to A
-14:	NOP		;finished
-15:	JUMP 14	;loop
+0:  JUMP 6
+1:  A
+2:  B
+3:  C
+4:  D
+5:  E
+6:  LOAD 1 ;load A into acc
+7:  SUB  2 ;acc = acc - B
+8:  WRTE 1 ;write acc back to A
+9:  LOAD 4 ;load D into acc
+10: DIV  5 ;acc = acc/E
+11: ADD  3 ;acc = acc + C
+12: MUL  1 ;acc = acc*(A-B)
+13: WRTE 1 ;write final answer to A
+15: JUMP 1 ;show final answer
