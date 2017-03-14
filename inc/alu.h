@@ -1,7 +1,7 @@
 /**
     \file alu.h
     \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \created 2017-02-10
+    \date 2017-02-10
     \brief Detailing ALU arithmetic operations.
 */
 

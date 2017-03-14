@@ -1,7 +1,7 @@
 /**
     \file dobby.c
     \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \created 2017-02-10
+    \date 2017-02-10
     \brief Dobby is a free emulator. Master gave Dobby his own architecture.
 */
 
@@ -72,19 +72,6 @@ void print_debug()
     mvprintw(13, 8, "data:\t0x%04x", memory[bus.addr]);
 }
 
-/**
- * @brief Simple program, adds data in addr 1 to addr 2 then writes back to
- *  addr 1.
- *
- * 0: JUMP 3    // jump to instruction 3
- * 1: 0
- * 2: 1
- * 3: LOAD 1    // load [0x01] into accumulator
- * 3: ADD  2    // add [0x02] to what is in accumulator
- * 4: WRTE 1    // write accumulator to 0x01
- * 5: JUMP 3    // jump back to 0x03, reload 0x01 to accumulator
- */
-/**
 static uint16_t program[] = {
     JUMP << 12 | 3,
     0,
@@ -94,25 +81,25 @@ static uint16_t program[] = {
     WRTE << 12 | 1,
     JUMP << 12 | 3
 };
-*/
+
 // answer should be 45
-static uint16_t program[] = {
-    JUMP << 12 | 6,
-    5,
-    4,
-    3,
-    2,
-    1,
-    LOAD << 12 | 1,
-    SUB  << 12 | 2,
-    WRTE << 12 | 1,
-    LOAD << 12 | 4,
-    DIV  << 12 | 5,
-    ADD  << 12 | 3,
-    MUL  << 12 | 1,
-    WRTE << 12 | 1,
-    JUMP << 12 | 1
-};
+// static uint16_t program[] = {
+//     JUMP << 12 | 6,
+//     5,
+//     4,
+//     3,
+//     2,
+//     1,
+//     LOAD << 12 | 1,
+//     SUB  << 12 | 2,
+//     WRTE << 12 | 1,
+//     LOAD << 12 | 4,
+//     DIV  << 12 | 5,
+//     ADD  << 12 | 3,
+//     MUL  << 12 | 1,
+//     WRTE << 12 | 1,
+//     JUMP << 12 | 1
+// };
 
 int main()
 {

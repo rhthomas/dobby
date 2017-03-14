@@ -1,7 +1,7 @@
 /**
     \file decoder.h
     \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \created 2017-02-10
+    \date 2017-02-10
     \brief Instruction decoder.
 
     Instructions are stored in the instruction register, ir. Top 4 bits

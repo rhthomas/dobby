@@ -28,15 +28,17 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
 ## Example assembler
 
 This simple test program initialises the values of `0` and `1` to the memory in
-addresses 0x01 and 0x02. First the system jumps to 0x03, does an addition with
-what's in address 0x01 and 0x02, writes back to address 0x01 then repeats, thus
-repeating the +1 operation with each loop.
+addresses 0x01 and 0x02. First the system jumps to 0x03, loads the contents of
+0x01 into the accumulator, adds the accumulator to the contents of 0x02, writes
+the result back to address 0x01 then repeats, thus repeating the +1 operation
+with each loop.
 
 ```
 JUMP 3
 0
 1
-ADD  1 2
+LOAD 1
+ADD  2
 WRTE 1
 JUMP 3
 ```

@@ -1,7 +1,7 @@
 /**
     \file decoder.c
     \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \created 2017-02-10
+    \date 2017-02-10
     \brief Instruction decoder.
 
     The operation of the CPU is a simple state machine. We start by fetching

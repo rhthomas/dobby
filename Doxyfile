@@ -1,6 +1,20 @@
+# project information
 PROJECT_NAME           = "Dobby"
 PROJECT_BRIEF          = "University of Southampton second year ELEC2204 \
                          Computer Engineering coursework."
+
+# folder to store output
 OUTPUT_DIRECTORY       = doxygen
+
+# access to files
 RECURSIVE              = yes
 USE_MDFILE_AS_MAINPAGE = README.md
+
+# extraction parameters
+EXTRACT_ALL            = NO
+HIDE_UNDOC_MEMBERS     = YES
+
+# generate class diagrams
+HIDE_UNDOC_RELATIONS   = YES
+HAVE_DOT               = YES
+COLLABORATION_GRAPH    = YES
