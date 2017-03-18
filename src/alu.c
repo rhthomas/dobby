@@ -10,13 +10,37 @@
 void alu_compute()
 {
     switch(alu_task) {
-        case ADD: regs.ac += alu_input; break;
-        case SUB: regs.ac -= alu_input; break;
-        case AND: regs.ac &= alu_input; break;
-        case OR:  regs.ac |= alu_input; break;
-        case NOT: regs.ac = ~alu_input; break;
-        case XOR: regs.ac ^= alu_input; break;
-        case MUL: regs.ac *= alu_input; break;
-        case DIV: regs.ac /= alu_input; break;
+        case ADD:
+            opcode_print = "ADD   ";
+            regs.ac += alu_input;
+            break;
+        case SUB:
+            opcode_print = "SUB   ";
+            regs.ac -= alu_input;
+            break;
+        case AND:
+            opcode_print = "AND   ";
+            regs.ac &= alu_input;
+            break;
+        case OR:
+            opcode_print = "OR    ";
+            regs.ac |= alu_input;
+            break;
+        case NOT:
+            opcode_print = "NOT   ";
+            regs.ac = ~alu_input;
+            break;
+        case XOR:
+            opcode_print = "XOR   ";
+            regs.ac ^= alu_input;
+            break;
+        case MUL:
+            opcode_print = "MUL   ";
+            regs.ac *= alu_input;
+            break;
+        case DIV:
+            opcode_print = "DIV   ";
+            regs.ac /= alu_input;
+            break;
     }
 }

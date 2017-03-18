@@ -20,14 +20,14 @@ void decode()
     uint16_t arg = regs.ir & 0x0FFF;
 
     switch(opcode) {
-        case ADD: opcode_print = "ADD   ";
-        case SUB: opcode_print = "SUB   ";
-        case AND: opcode_print = "AND   ";
-        case OR:  opcode_print = "OR    ";
-        case NOT: opcode_print = "NOT   ";
-        case XOR: opcode_print = "XOR   ";
-        case MUL: opcode_print = "MUL   ";
-        case DIV: opcode_print = "DIV   ";
+        case ADD:
+        case SUB:
+        case AND:
+        case OR:
+        case NOT:
+        case XOR:
+        case MUL:
+        case DIV:
             // set ALU parameters
             bus.data = opcode;
             // send operation to ALU task
