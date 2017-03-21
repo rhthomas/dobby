@@ -1,27 +1,33 @@
 # file to build
 TARGET  = dobby
 
+# src/alu.c src/decoder.c src/dobby.c src/memory.c src/registers.c
+SOURCES = $(wildcard src/*.c)
 # src/alu.o src/decoder.o src/dobby.o src/memory.o src/registers.o
-OBJECTS = $(patsubst %.c, %.o, $(wildcard src/*.c))
+OBJECTS = $(patsubst %.c, %.o, $(SOURCES))
 
 # tools and flags
 CC     = gcc
 CFLAGS = -Wall -std=c99 -I inc/
 
+# get file dependencies then build dobby
+deafult: depend $(TARGET)
+# include object dependencies
+include Makefile.deps
+
 # primary targets
 $(TARGET): $(OBJECTS)
-	$(CC) -o $(TARGET) $(OBJECTS) -lncurses
+	$(CC) -o $@ $^ -lncurses
 
-# object dependencies
-alu.o: inc/alu.h inc/opcodes.h inc/registers.h inc/global.h inc/decoder.h
-decoder.o: inc/alu.h inc/decoder.h inc/global.h inc/memory.h inc/opcodes.h \
-	inc/registers.h
-memory.o: inc/global.h inc/memory.h inc/registers.h
-registers.o: inc/global.h inc/registers.h
+# generate object dependencies
+depend: Makefile.deps
+Makefile.deps: $(SOURCES)
+	$(CC) $(CFLAGS) -MM $^ >> Makefile.deps
 
-# house keeping
+# clean away build files
 clean:
-	@rm src/*.o $(TARGET)
+	@rm src/*.o $(TARGET) Makefile.deps
+	@rm -rf doxygen/
 
 # documentation
 docs:
