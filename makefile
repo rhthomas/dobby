@@ -13,6 +13,9 @@ CFLAGS = -Wall -std=c99 -I inc/
 # get file dependencies then build dobby
 default: Makefile.deps $(TARGET)
 
+# include object dependencies
+-include Makefile.deps
+
 # primary targets
 $(TARGET): $(OBJECTS)
 	$(CC) -o $@ $^ -lncurses
@@ -21,15 +24,16 @@ $(TARGET): $(OBJECTS)
 Makefile.deps: $(SOURCES)
 	$(CC) $(CFLAGS) -MM $^ > Makefile.deps
 
+# compile documentation
+docs:
+	@echo "Running doxygen..."
+	@doxygen
+
+# open doxygen website
+open: docs
+	@open doxygen/html/index.html
+
 # clean away build files
 clean:
 	@rm src/*.o $(TARGET) Makefile.deps
 	@rm -rf doxygen/
-
-# documentation
-docs:
-	@doxygen
-	@open doxygen/html/index.html
-
-# include object dependencies
-include Makefile.deps
