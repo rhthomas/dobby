@@ -8,8 +8,9 @@ OUTPUT_DIRECTORY       = doxygen
 QUIET                  = YES
 
 # access to files
-RECURSIVE              = yes
+RECURSIVE              = YES
 USE_MDFILE_AS_MAINPAGE = README.md
+USE_MATHJAX            = YES
 
 # extraction parameters
 EXTRACT_ALL            = NO

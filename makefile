@@ -11,18 +11,15 @@ CC     = gcc
 CFLAGS = -Wall -std=c99 -I inc/
 
 # get file dependencies then build dobby
-deafult: depend $(TARGET)
-# include object dependencies
-include Makefile.deps
+default: Makefile.deps $(TARGET)
 
 # primary targets
 $(TARGET): $(OBJECTS)
 	$(CC) -o $@ $^ -lncurses
 
 # generate object dependencies
-depend: Makefile.deps
 Makefile.deps: $(SOURCES)
-	$(CC) $(CFLAGS) -MM $^ >> Makefile.deps
+	$(CC) $(CFLAGS) -MM $^ > Makefile.deps
 
 # clean away build files
 clean:
@@ -33,3 +30,6 @@ clean:
 docs:
 	@doxygen
 	@open doxygen/html/index.html
+
+# include object dependencies
+include Makefile.deps
