@@ -7,12 +7,18 @@
 
 #include "memory.h"
 
+/**
+    \brief Writes data from data bus to address in memory.
+*/
 void mem_write()
 {
     // write data on bus to memory
     memory[bus.addr] = bus.data;
 }
 
+/**
+    \brief Writes data from address in memory to data bus.
+*/
 void mem_read()
 {
     // write data in memory to bus

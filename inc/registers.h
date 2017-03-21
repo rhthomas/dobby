@@ -9,27 +9,24 @@
 #define _REGISTERS_H
 
 #include <stdint.h>
-#include "global.h"    // access to data and address bus
+#include "global.h" // access to data and address bus
 
 /**
     \brief Register structure.
+    \param pc Proram counter.
+    \param ir instruction register.
+    \param ac Accumulator.
 
     Contains program counter, instruction register and accumulator.
 */
 struct {
-    uint16_t pc;    // program counter
-    uint16_t ir;    // instruction register
-    uint16_t ac;    // accumulator
+    uint16_t pc;
+    uint16_t ir;
+    uint16_t ac;
 } regs;
 
-/**
-    \brief Reads value in the accumulator to the data bus.
-*/
+// function definitions
 void read_ac();
-
-/**
-    \brief Writes data bus contents to the accumulator.
-*/
 void write_ac();
 
 #endif // _REGISTERS_H

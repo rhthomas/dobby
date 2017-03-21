@@ -5,6 +5,7 @@ PROJECT_BRIEF          = "University of Southampton second year ELEC2204 \
 
 # folder to store output
 OUTPUT_DIRECTORY       = doxygen
+QUIET                  = YES
 
 # access to files
 RECURSIVE              = yes

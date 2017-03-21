@@ -22,3 +22,8 @@ registers.o: inc/global.h inc/registers.h
 # house keeping
 clean:
 	@rm src/*.o $(TARGET)
+
+# documentation
+docs:
+	@doxygen
+	@open doxygen/html/index.html

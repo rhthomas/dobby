@@ -9,6 +9,9 @@
 
 int clock = 0;
 
+/**
+    \brief Prints the register graphic to the terminal.
+*/
 void print_regs()
 {
     for(int y=2; y<9; y++) {
@@ -30,6 +33,9 @@ void print_regs()
     }
 }
 
+/**
+    \brief Prints human readable state.
+*/
 void get_state()
 {
     switch(present_s) {
@@ -44,6 +50,9 @@ void get_state()
     }
 }
 
+/**
+    \brief Prints debug info such as register values, instructions to execute etc.
+*/
 void print_debug()
 {
     // current clock ticks

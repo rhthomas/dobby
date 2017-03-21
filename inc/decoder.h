@@ -24,14 +24,8 @@ char *opcode_print;
 // present and next state variables
 enum {DECODE, FETCH, INC_PC} present_s, next_s;
 
-/**
-    \brief Decodes instruction register.
-*/
+// function definitions
 void decode();
-
-/**
-    \brief Emulates fetch-execute cycle.
-*/
 void cycle();
 
 #endif // _DECODER_H

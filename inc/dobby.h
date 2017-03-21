@@ -17,22 +17,7 @@
 #include "opcodes.h"
 #include "registers.h"
 
-/**
-    \brief Prints the register graphic to the terminal.
-*/
+// function definitions
 void print_regs();
-
-/**
-    \brief Prints human readable state.
-*/
 void get_state();
-
-/**
-    \brief Prints human readable ALU operation.
-*/
-void get_task();
-
-/**
-    \brief Prints debug info such as register values, instructions to execute etc.
-*/
 void print_debug();

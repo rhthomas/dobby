@@ -12,6 +12,9 @@
 
 #include "decoder.h"
 
+/**
+    \brief Decodes instruction register.
+*/
 void decode()
 {
     // 0b1111.0000.0000.0000
@@ -80,6 +83,9 @@ void decode()
     }
 }
 
+/**
+    \brief Emulates fetch-execute cycle.
+*/
 void cycle()
 {
     // update present state

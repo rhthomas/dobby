@@ -16,14 +16,8 @@
 // memory array
 uint16_t memory[MEM_SIZE];
 
-/**
-    \brief Writes data from data bus to address in memory.
-*/
+// function definitions
 void mem_write();
-
-/**
-    \brief Writes data from address in memory to data bus.
-*/
 void mem_read();
 
 #endif // _MEMORY_H

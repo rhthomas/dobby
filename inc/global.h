@@ -10,7 +10,13 @@
 
 #include <stdint.h>
 
-// address bus and data bus are 16 bits wide
+/**
+    \brief Bus structure.
+    \param data 16-bit data bus.
+    \param addr 16-bit address bus.
+
+    The bus is the link between the ALU, registers and memory.
+*/
 struct {
     uint16_t data; // data bus
     uint16_t addr; // address bus
