@@ -7,7 +7,7 @@
 
 #include <stdio.h>
 #include <stdint.h>
-#include <string.h>     // required for memcpy()
+#include <string.h>
 #include <ncurses.h>
 
 #include "alu.h"
@@ -15,9 +15,5 @@
 #include "global.h"
 #include "memory.h"
 #include "opcodes.h"
+#include "print.h"
 #include "registers.h"
-
-// function definitions
-void print_regs();
-void get_state();
-void print_debug();
