@@ -11,6 +11,8 @@
 #include "registers.h" // access to accumulator
 #include "global.h"    // access to data and address bus
 
+#include <ncurses.h>
+
 #define MEM_SIZE 256
 
 // memory array
@@ -19,5 +21,6 @@ uint16_t memory[MEM_SIZE];
 // function definitions
 void mem_write();
 void mem_read();
+void print_mem(int);
 
 #endif // _MEMORY_H

@@ -24,3 +24,18 @@ void mem_read()
     // write data in memory to bus
     bus.data = memory[bus.addr];
 }
+
+void print_mem(int n)
+{
+    mvprintw(1,30,"Memory:");
+    mvprintw(2,30,"Addr | Data");
+    mvprintw(3,30,"-------------");
+    // print first 20 addresses in memory
+    for(int y=16*n; y<16*(n+1); y++) {
+        if(y == bus.addr) {
+            attron(A_STANDOUT);
+        }
+        mvprintw(y-(16*n)+4, 30, "0x%02x | 0x%04x", y, memory[y]);
+        attroff(A_STANDOUT);
+    }
+}

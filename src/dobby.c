@@ -8,27 +8,27 @@
 #include "dobby.h"
 
 int clock = 0;
+uint16_t mem=0;
 
 /**
     \brief Prints the register graphic to the terminal.
 */
 void print_regs()
 {
-    for(int y=2; y<9; y++) {
-        if(!(y%2)) {
-            mvprintw(y, 30, "+----------+");
-        } else {
-            switch(y) {
-                case 3:
-                    mvprintw(y, 27, "pc |  0x%04x  |", regs.pc);
-                    break;
-                case 5:
-                    mvprintw(y, 27, "ir |  0x%04x  |", regs.ir);
-                    break;
-                case 7:
-                    mvprintw(y, 27, "ac |  0x%04x  |", regs.ac);
-                    break;
-            }
+    for(int y=11; y<18; y++) {
+        switch(y) {
+            case 12:
+                mvprintw(y, 2, "pc |  0x%04x  |", regs.pc);
+                break;
+            case 14:
+                mvprintw(y, 2, "ir |  0x%04x  |", regs.ir);
+                break;
+            case 16:
+                mvprintw(y, 2, "ac |  0x%04x  |", regs.ac);
+                break;
+            default:
+                mvprintw(y, 5, "+----------+");
+                break;
         }
     }
 }
@@ -39,14 +39,14 @@ void print_regs()
 void get_state()
 {
     switch(present_s) {
-        case 0000: mvprintw(4, 8, "pres:\tDECODE  "); break;
-        case 0001: mvprintw(4, 8, "pres:\tFETCH   "); break;
-        case 0002: mvprintw(4, 8, "pres:\tINC_PC  "); break;
+        case 0000: mvprintw(3, 8, "pres:\tDECODE"); break;
+        case 0001: mvprintw(3, 8, "pres:\tFETCH"); break;
+        case 0002: mvprintw(3, 8, "pres:\tINC_PC"); break;
     }
     switch(next_s) {
-        case 0000: mvprintw(5, 8, "next:\tDECODE  "); break;
-        case 0001: mvprintw(5, 8, "next:\tFETCH   "); break;
-        case 0002: mvprintw(5, 8, "next:\tINC_PC  "); break;
+        case 0000: mvprintw(4, 8, "next:\tDECODE"); break;
+        case 0001: mvprintw(4, 8, "next:\tFETCH"); break;
+        case 0002: mvprintw(4, 8, "next:\tINC_PC"); break;
     }
 }
 
@@ -55,65 +55,74 @@ void get_state()
 */
 void print_debug()
 {
-    // current clock ticks
-    attron(A_STANDOUT);
-    mvprintw(0, 0, "Clock: %d\n",clock++);
-    attroff(A_STANDOUT);
     // opcode
-    mvprintw(2, 0, "Opcode:");
-    mvprintw(2, 8, "%s", opcode_print);
+    mvprintw(1, 0, "Opcode:");
+    mvprintw(1, 8, "%s", opcode_print);
     // current state
-    mvprintw(4, 0, "State");
+    mvprintw(3, 0, "State");
     get_state();
     // bus
-    mvprintw(7, 0, "Bus");
-    mvprintw(7, 8, "addr:\t0x%04x", bus.addr);
-    mvprintw(8, 8, "data:\t0x%04x", bus.data);
+    mvprintw(6, 0, "Bus");
+    mvprintw(6, 8, "addr:\t0x%02x", bus.addr);
+    mvprintw(7, 8, "data:\t0x%04x", bus.data);
     // alu
-    mvprintw(10, 0, "ALU");
-    mvprintw(10, 8, "input:\t0x%04x", alu_input);
+    mvprintw(9, 0, "ALU");
+    mvprintw(9, 8, "input:\t0x%04x", alu_input);
     // regs
     print_regs();
     // memory
-    mvprintw(12, 0, "Memory");
-    mvprintw(12, 8, "addr:\t0x%04x", bus.addr);
-    mvprintw(13, 8, "data:\t0x%04x", memory[bus.addr]);
+    print_mem(mem);
 }
 
-// X=(A-B)*(C+D/E)
+// X=(A-B)*(C+D/E)=5
 // when finished, hang at addr 14
 static uint16_t program[] = {
-    JUMP << 12 | 6,
-    5,
-    4,
-    3,
-    2,
-    1,
-    LOAD << 12 | 1,
-    SUB  << 12 | 2,
-    WRTE << 12 | 1,
-    LOAD << 12 | 4,
-    DIV  << 12 | 5,
-    ADD  << 12 | 3,
-    MUL  << 12 | 1,
-    WRTE << 12 | 1,
-    JUMP << 12 | 14
+    JUMP << 12 | 6, // jump to start of program
+    5,              // A
+    4,              // B
+    3,              // C
+    2,              // D
+    1,              // E
+    LOAD << 12 | 1, // load A into acc
+    SUB  << 12 | 2, // acc = acc-B
+    WRTE << 12 | 1, // write acc (A-B) to 0x01
+    LOAD << 12 | 4, // load D into acc
+    DIV  << 12 | 5, // acc = acc / E
+    ADD  << 12 | 3, // acc = acc + C
+    MUL  << 12 | 1, // acc = acc * 0x01 (A-B)
+    WRTE << 12 | 1, // write answer to 0x01 (A-B*(C+D/E))
+    JUMP << 12 | 14 // loop forever
 };
 
 int main()
 {
-    // initialise ncurses screen
+    // initialise ncurses screen with no cursor
     initscr();
+    curs_set(0);
     // initialise next state to fetch
     next_s = FETCH;
     // load in program
     memcpy(memory, program, sizeof(program));
+
+    // print initial help window
+    mvprintw(0,0,"Dobby debugging suite.");
+    mvprintw(1,0,"u: Move address list up.");
+    mvprintw(2,0,"d: Move address list down.");
+    mvprintw(3,0,"q: Quit program.");
+    mvprintw(4,0,"Other keys increment program counter.");
+
     // loop until 'q' is pressed
-    while(getch() != 'q') {
+    while(1) {
+        char c=getch();
+        clear();
+        switch(c) {
+            case 'u': mem = (mem < 15) ? mem+1 : 15; break;
+            case 'd': mem = (mem > 0) ? mem-1 : 0; break;
+            case 'q': endwin(); return 0;
+            default: cycle(); break;
+        }
         print_debug();
-        cycle();
     }
-    endwin();
 
     return 0;
 }

@@ -78,22 +78,42 @@ By pressing `<enter>` (actually, any key besides `<q>`) the system will step
 through to the next state of operation. This is to help debug the operation of
 the CPU.
 
+The `<u>` and `<d>` keys move the memory table up/down. It is unrealistic to
+print all 256 addresses to the screen at the same time.
+
+### Start up instructions
+
 ```
-Clock: 1
-
-States  pres:   FETCH         +----------+
-        next:   DECODE     pc |  0x0000  |
-                              +----------+
-Bus     addr:   0x0000     ir |  0x0041  |
-        data:   0x0041        +----------+
-                           ac |  0x0000  |
-ALU     opA:    0x0000        +----------+
-        opB:    0x0000
-        task:   ADD
-
-Memory  addr:   0x0000
-        data:   0x0041
+Dobby debugging suite.
+u: Move address list up.
+d: Move address list down.
+q: Quit program.
+Other keys increment program counter.
 ```
 
-An example of the full stepped sequence for one addition cycle is shown in the
-`output.txt` file.
+### Operation
+
+```
+Opcode: JUMP                  Memory:
+                              Addr | Data
+State   pres:   FETCH         -------------
+        next:   DECODE        0x00 | 0xa006
+                              0x01 | 0x0005
+Bus     addr:   0x06          0x02 | 0x0004
+        data:   0x8001        0x03 | 0x0003
+                              0x04 | 0x0002
+ALU     input:  0x0000        0x05 | 0x0001
+                              0x06 | 0x8001
+     +----------+             0x07 | 0x1002
+  pc |  0x0006  |             0x08 | 0x9001
+     +----------+             0x09 | 0x8004
+  ir |  0x8001  |             0x0a | 0x6005
+     +----------+             0x0b | 0x0003
+  ac |  0x0000  |             0x0c | 0x7001
+     +----------+             0x0d | 0x9001
+                              0x0e | 0xa00e
+                              0x0f | 0x0000
+```
+
+It doesn't show here but in the memory table the address that the address bus
+currently points to is highlighted.
