@@ -50,7 +50,6 @@ void print_debug()
     attron(A_STANDOUT);
     mvprintw(0, 0, "Clock: %d\n",clock++);
     attroff(A_STANDOUT);
-
     // opcode
     mvprintw(2, 0, "Opcode:");
     mvprintw(2, 8, "%s", opcode_print);
@@ -73,45 +72,43 @@ void print_debug()
 }
 
 // add 1 every time
-// static uint16_t program[] = {
-//     JUMP << 12 | 3,
-//     0,
-//     1,
-//     LOAD << 12 | 1,
-//     ADD  << 12 | 2,
-//     WRTE << 12 | 1,
-//     JUMP << 12 | 3
-// };
-
-// answer should be 45
 static uint16_t program[] = {
-    JUMP << 12 | 6,
-    5,
-    4,
-    3,
-    2,
+    JUMP << 12 | 3,
+    0,
     1,
     LOAD << 12 | 1,
-    SUB  << 12 | 2,
+    ADD  << 12 | 2,
     WRTE << 12 | 1,
-    LOAD << 12 | 4,
-    DIV  << 12 | 5,
-    ADD  << 12 | 3,
-    MUL  << 12 | 1,
-    WRTE << 12 | 1,
-    JUMP << 12 | 1,
+    JUMP << 12 | 3
 };
+
+// answer should be 45
+// static uint16_t program[] = {
+//     JUMP << 12 | 6,
+//     5,
+//     4,
+//     3,
+//     2,
+//     1,
+//     LOAD << 12 | 1,
+//     SUB  << 12 | 2,
+//     WRTE << 12 | 1,
+//     LOAD << 12 | 4,
+//     DIV  << 12 | 5,
+//     ADD  << 12 | 3,
+//     MUL  << 12 | 1,
+//     WRTE << 12 | 1,
+//     JUMP << 12 | 1,
+// };
 
 int main()
 {
+    // initialise ncurses screen
     initscr();
-
     // initialise next state to fetch
     next_s = FETCH;
-
     // load in program
     memcpy(memory, program, sizeof(program));
-
     // loop until 'q' is pressed
     while(getch() != 'q') {
         print_debug();

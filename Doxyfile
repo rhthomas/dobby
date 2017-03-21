@@ -12,7 +12,8 @@ USE_MDFILE_AS_MAINPAGE = README.md
 
 # extraction parameters
 EXTRACT_ALL            = NO
-E
+EXTRACT_PRIVATE        = YES
+HIDE_UNDOC_MEMBERS     = YES
 
 # generate class diagrams
 HIDE_UNDOC_RELATIONS   = YES
