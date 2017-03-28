@@ -9,6 +9,20 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
 ├── Doxyfile
 ├── Makefile
 ├── README.md
+├── build
+│   ├── alu.d
+│   ├── alu.o
+│   ├── decoder.d
+│   ├── decoder.o
+│   ├── dobby.d
+│   ├── dobby.o
+│   ├── memory.d
+│   ├── memory.o
+│   ├── print.d
+│   ├── print.o
+│   ├── registers.d
+│   └── registers.o
+├── dobby
 ├── inc
 │   ├── alu.h
 │   ├── decoder.h
@@ -16,12 +30,14 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
 │   ├── global.h
 │   ├── memory.h
 │   ├── opcodes.h
+│   ├── print.h
 │   └── registers.h
 └── src
     ├── alu.c
     ├── decoder.c
     ├── dobby.c
     ├── memory.c
+    ├── print.c
     └── registers.c
 ```
 
@@ -36,13 +52,12 @@ Makefile there are a number of options,
 * `make docs`, calls Doxygen to generate code documentation.
 
 ```
-gcc -Wall -std=c99 -I inc/ -MM src/alu.c src/decoder.c src/dobby.c src/memory.c src/registers.c > Makefile.deps
-gcc -Wall -std=c99 -I inc/   -c -o src/alu.o src/alu.c
-gcc -Wall -std=c99 -I inc/   -c -o src/decoder.o src/decoder.c
-gcc -Wall -std=c99 -I inc/   -c -o src/dobby.o src/dobby.c
-gcc -Wall -std=c99 -I inc/   -c -o src/memory.o src/memory.c
-gcc -Wall -std=c99 -I inc/   -c -o src/registers.o src/registers.c
-gcc -o dobby src/alu.o src/decoder.o src/dobby.o src/memory.o src/registers.o -lncurses
+CC src/alu.c
+CC src/decoder.c
+CC src/dobby.c
+CC src/memory.c
+CC src/print.c
+CC src/registers.c
 ```
 
 ## Example assembly
