@@ -7,17 +7,11 @@
 
 #include "registers.h"
 
-/**
-    \brief Reads value in the accumulator to the data bus.
-*/
 void read_ac()
 {
     bus.data = regs.ac;
 }
 
-/**
-    \brief Writes data bus contents to the accumulator.
-*/
 void write_ac()
 {
     regs.ac = bus.data;

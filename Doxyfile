@@ -2,6 +2,7 @@
 PROJECT_NAME           = "Dobby"
 PROJECT_BRIEF          = "University of Southampton second year ELEC2204 \
                          Computer Engineering coursework."
+HTML_COLORSTYLE_HUE    = 120
 
 # folder to store output
 OUTPUT_DIRECTORY       = doxygen

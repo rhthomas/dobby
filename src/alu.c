@@ -7,12 +7,6 @@
 
 #include "alu.h"
 
-/**
-    \brief Sets accumulator to result of ALU operation.
-
-    Runs ALU computation on input to ALU and accumulator based on the opcode
-    provided and writes the result back to the accumulator.
- */
 void alu_compute()
 {
     switch(alu_task) {

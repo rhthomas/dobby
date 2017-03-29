@@ -48,8 +48,8 @@ int main()
         char c=getch();
         clear();
         switch(c) {
-            case 'u': mem = (mem < 15) ? mem+1 : 15; break;
-            case 'd': mem = (mem > 0) ? mem-1 : 0; break;
+            case 'u': mem = (mem < 0xFF) ? mem+1 : 0x00; break;
+            case 'd': mem = (mem > 0x00) ? mem-1 : 0xFF; break;
             case 'q': endwin(); return 0;
             default: cycle(); break;
         }

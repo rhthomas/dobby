@@ -11,13 +11,19 @@
 #include "registers.h" // access to accumulator
 #include "global.h"    // access to data and address bus
 
-#define MEM_SIZE 256
+#define MEM_SIZE 4096
 
 // memory array
 uint16_t memory[MEM_SIZE];
 
-// function definitions
+/**
+    \brief Writes data from data bus to address in memory.
+*/
 void mem_write();
+
+/**
+    \brief Writes data from address in memory to data bus.
+*/
 void mem_read();
 
 #endif // _MEMORY_H

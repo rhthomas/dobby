@@ -7,9 +7,6 @@
 
 #include "print.h"
 
-/**
-    \brief Prints debugger instructions to the terminal.
-*/
 void start_screen()
 {
     mvprintw(0,0,"Dobby debugging suite.");
@@ -19,9 +16,6 @@ void start_screen()
     mvprintw(4,0,"Other keys increment program counter.");
 }
 
-/**
-    \brief Prints the register graphic to the terminal.
-*/
 void print_regs()
 {
     for(int y=11; y<18; y++) {
@@ -42,10 +36,6 @@ void print_regs()
     }
 }
 
-/**
-    \brief Prints memory contents to display in the form of a table.
-    \param n Address range to display, eg. n=0 shows addr 0x0 to 0xF.
-*/
 void print_mem(int n)
 {
     mvprintw(1,30,"Memory:");
@@ -56,14 +46,11 @@ void print_mem(int n)
         if(y == bus.addr) {
             attron(A_STANDOUT);
         }
-        mvprintw(y-(16*n)+4, 30, "0x%02x | 0x%04x", y, memory[y]);
+        mvprintw(y-(16*n)+4, 30, "0x%03x | 0x%04x", y, memory[y]);
         attroff(A_STANDOUT);
     }
 }
 
-/**
-    \brief Prints present and next state in human readable form.
-*/
 void get_state()
 {
     switch(present_s) {
@@ -78,11 +65,6 @@ void get_state()
     }
 }
 
-/**
-    \brief Prints debug info such as memory, registers, opcodes etc.
-    \param addr Address range to display.
-    \see print_mem
-*/
 void print_debug(int addr)
 {
     // opcode
@@ -93,7 +75,7 @@ void print_debug(int addr)
     get_state();
     // bus
     mvprintw(6, 0, "Bus");
-    mvprintw(6, 8, "addr:\t0x%02x", bus.addr);
+    mvprintw(6, 8, "addr:\t0x%03x", bus.addr);
     mvprintw(7, 8, "data:\t0x%04x", bus.data);
     // alu
     mvprintw(9, 0, "ALU");

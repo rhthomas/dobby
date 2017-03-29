@@ -25,8 +25,14 @@ struct {
     uint16_t ac;
 } regs;
 
-// function definitions
+/**
+    \brief Reads value in the accumulator to the data bus.
+*/
 void read_ac();
+
+/**
+    \brief Writes data bus contents to the accumulator.
+*/
 void write_ac();
 
 #endif // _REGISTERS_H
