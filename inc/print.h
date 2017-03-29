@@ -5,10 +5,14 @@
     \brief Functions to print debugging suite with ncurses.
 */
 
+#ifndef _PRINT_H
+#define _PRINT_H
+
 #include <ncurses.h>
 
 #include "alu.h"       // alu_input
 #include "decoder.h"   // opcode_print
+#include "examples.h"  // examples array size
 #include "global.h"    // memory table highlighting
 #include "memory.h"    // memory table
 #include "registers.h" // print_regs
@@ -29,7 +33,7 @@ void print_regs();
     \brief Prints memory contents to display in the form of a table.
     \param n Address range to display, eg. n=0 shows addr 0x0 to 0xF.
 */
-void print_mem(int);
+void print_mem(int n);
 
 /**
     \brief Prints present and next state in human readable form.
@@ -41,4 +45,6 @@ void get_state();
     \param addr Address range to display.
     \see print_mem
 */
-void print_debug(int);
+void print_debug(int addr);
+
+#endif // _PRINT_H

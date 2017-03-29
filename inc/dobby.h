@@ -5,15 +5,25 @@
     \brief Dobby is a free emulator. Master gave Dobby his own architecture.
 */
 
+#ifndef _DOBBY_H
+#define _DOBBY_H
+
 #include <stdio.h>
 #include <stdint.h>
-#include <string.h>
-#include <ncurses.h>
+#include <string.h> // memcpy()
 
 #include "alu.h"
 #include "decoder.h"
+#include "examples.h"
 #include "global.h"
 #include "memory.h"
 #include "opcodes.h"
 #include "print.h"
 #include "registers.h"
+
+/**
+    \brief Resets registers, system bus etc. when swapping program.
+*/
+void reset();
+
+#endif // _DOBBY_H

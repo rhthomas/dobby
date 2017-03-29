@@ -10,25 +10,17 @@
 int clock = 0;
 uint16_t mem=0;
 
-// X=(A-B)*(C+D/E)=5
-// when finished, hang at addr 14
-static uint16_t program[] = {
-    JUMP << 12 | 6, // jump to start of program
-    5,              // A
-    4,              // B
-    3,              // C
-    2,              // D
-    1,              // E
-    LOAD << 12 | 1, // load A into acc
-    SUB  << 12 | 2, // acc = acc-B
-    WRTE << 12 | 1, // write acc (A-B) to 0x01
-    LOAD << 12 | 4, // load D into acc
-    DIV  << 12 | 5, // acc = acc / E
-    ADD  << 12 | 3, // acc = acc + C
-    MUL  << 12 | 1, // acc = acc * 0x01 (A-B)
-    WRTE << 12 | 1, // write answer to 0x01 (A-B*(C+D/E))
-    JUMP << 12 | 14 // loop forever
-};
+void reset()
+{
+    // reset data bus
+    bus.data=0; bus.addr=0;
+    // reset registers
+    regs.pc=0; regs.ir=0; regs.ac=0;
+    // reset state machine
+    next_s = FETCH;
+    // reset opcode
+    opcode_print = NULL;
+}
 
 int main()
 {
@@ -37,9 +29,6 @@ int main()
     curs_set(0);
     // initialise next state to fetch
     next_s = FETCH;
-    // load in program
-    memcpy(memory, program, sizeof(program));
-
     // print initial help window
     start_screen();
 
@@ -48,9 +37,17 @@ int main()
         char c=getch();
         clear();
         switch(c) {
-            case 'u': mem = (mem < 0xFF) ? mem+1 : 0x00; break;
-            case 'd': mem = (mem > 0x00) ? mem-1 : 0xFF; break;
+            case '1':
+            case '2':
+                reset();
+                memcpy(memory, examples[c-49], MEM_SIZE * sizeof(uint16_t));
+                break;
+            // move mem list up or down
+            case 'u': mem = (mem < 0xFF) ? mem+1 : 0xFF; break;
+            case 'd': mem = (mem > 0x00) ? mem-1 : 0x00; break;
+            // quit application
             case 'q': endwin(); return 0;
+            // any other button - cycle
             default: cycle(); break;
         }
         print_debug(mem);

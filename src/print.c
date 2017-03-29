@@ -10,10 +10,13 @@
 void start_screen()
 {
     mvprintw(0,0,"Dobby debugging suite.");
-    mvprintw(1,0,"u: Move address list up.");
-    mvprintw(2,0,"d: Move address list down.");
-    mvprintw(3,0,"q: Quit program.");
-    mvprintw(4,0,"Other keys increment program counter.");
+    mvprintw(1,0,"Other keys increment program counter.");
+    mvprintw(2,0,"u: Move address list up.");
+    mvprintw(3,0,"d: Move address list down.");
+    mvprintw(4,0,"q: Quit program.");
+    for(int i=0; i<2; i++) {
+        mvprintw(5+i,0,"%d: Program #%d",i+1, i+1);
+    }
 }
 
 void print_regs()
@@ -39,7 +42,7 @@ void print_regs()
 void print_mem(int n)
 {
     mvprintw(1,30,"Memory:");
-    mvprintw(2,30,"Addr | Data");
+    mvprintw(2,30,"Addr  | Data");
     mvprintw(3,30,"-------------");
     // print first 20 addresses in memory
     for(int y=16*n; y<16*(n+1); y++) {

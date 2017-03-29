@@ -15,7 +15,7 @@ INCDIRS = $(addprefix -I, $(INC))
 
 # tools and flags
 CC     = gcc
-CFLAGS = -Wall -std=c99 $(INCDIRS)
+CFLAGS = -std=c99 $(INCDIRS) -Wall
 
 MAKEFLAGS += --silent
 
@@ -35,7 +35,7 @@ $(OBJECTS): $(BUILD)%.o: $(SRC)%.c
 
 # lists dependencies for object files
 # eg. alu.o: src/alu.c inc/alu.h inc/opcodes.h inc/registers.h inc/global.h \
-  inc/print.h inc/decoder.h inc/memory.h 
+  inc/print.h inc/decoder.h inc/memory.h
 -include $(BUILD)*.d
 
 # compile documentation
