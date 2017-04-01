@@ -1,14 +1,10 @@
-/**
-    \file decoder.c
-    \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \date 2017-02-10
-    \brief Instruction decoder.
-
-    The operation of the CPU is a simple state machine. We start by fetching
-    the instruction at the address in memory which is defined by the program
-    counter. Then decode the instruction and execute it accordingly. Finally
-    the program counter and repeat.
-*/
+/***************************************************************************//**
+@file   decoder.c
+@author Rhys Thomas (rt8g15@soton.ac.uk)
+@date   2017-02-10
+@brief  Instruction decoder.
+@image  html state.png
+*******************************************************************************/
 
 #include "decoder.h"
 
@@ -85,11 +81,6 @@ void cycle()
     // update present state
     present_s = next_s;
     switch(present_s) {
-        case DECODE:
-            // decode instruction register
-            decode();
-            // next_s is defined inside decode case statements
-            break;
         case FETCH:
             // get next instruction
             bus.addr = regs.pc;
@@ -99,6 +90,11 @@ void cycle()
             regs.ir = bus.data;
             // now decode fetched message
             next_s = DECODE;
+            break;
+        case DECODE:
+            // decode instruction register
+            decode();
+            // next_s is defined inside decode case statements
             break;
         case INC_PC:
             // increment the program counter

@@ -12,6 +12,7 @@ QUIET                  = YES
 RECURSIVE              = YES
 USE_MDFILE_AS_MAINPAGE = README.md
 USE_MATHJAX            = YES
+IMAGE_PATH             = report/images/
 
 # extraction parameters
 EXTRACT_ALL            = NO

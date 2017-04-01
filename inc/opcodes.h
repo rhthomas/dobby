@@ -1,12 +1,12 @@
-/**
-    \file opcodes.h
-    \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \date 2017-02-10
-    \brief Definitions of opcodes. Instruction set based on 4-bit opcodes.
- */
+/***************************************************************************//**
+@file   opcodes.h
+@author Rhys Thomas (rt8g15@soton.ac.uk)
+@date   2017-02-10
+@brief  Definitions of opcodes. Instruction set based on 4-bit opcodes.
+*******************************************************************************/
 
-#ifndef _OPCODES_H
-#define _OPCODES_H
+#ifndef OPCODES_H
+#define OPCODES_H
 
 // data processing
 #define ADD  0x0
@@ -28,4 +28,4 @@
 
 // data movement (might not even need this)
 
-#endif // _OPCODES_H
+#endif // OPCODES_H

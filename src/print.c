@@ -1,9 +1,9 @@
-/**
-    \file print.c
-    \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \date 2017-03-21
-    \brief Functions to print debugging suite with ncurses.
-*/
+/***************************************************************************//**
+@file   print.c
+@author Rhys Thomas (rt8g15@soton.ac.uk)
+@date   2017-03-21
+@brief  Functions to print debugging suite with ncurses.
+*******************************************************************************/
 
 #include "print.h"
 

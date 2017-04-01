@@ -1,9 +1,9 @@
-/**
-    \file alu.c
-    \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \date 2017-02-10
-    \brief Detailing ALU arithmetic operations.
-*/
+/***************************************************************************//**
+@file   alu.c
+@author Rhys Thomas (rt8g15@soton.ac.uk)
+@date   2017-02-10
+@brief  Detailing ALU arithmetic operations.
+*******************************************************************************/
 
 #include "alu.h"
 

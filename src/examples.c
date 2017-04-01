@@ -1,12 +1,10 @@
-/**
-    \file examples.c
-    \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \date 2017-03-29
-    \brief Example assembly programs.
-    \see memory.h
-
-    Theses are copied into \p memory with memcpy based on keyboard presses.
-*/
+/***************************************************************************//**
+@file    examples.c
+@author  Rhys Thomas (rt8g15@soton.ac.uk)
+@date    2017-03-29
+@brief   Example assembly programs.
+@details These are copied into @p memory with memcpy based on keyboard presses.
+*******************************************************************************/
 
 #include "examples.h" // cpu memory size
 
@@ -40,5 +38,4 @@ uint16_t arithmetic[MEM_SIZE] = {
     JUMP << 12 | 14 // loop forever
 };
 
-// array of arrays
 uint16_t *examples[] = {adding, arithmetic};

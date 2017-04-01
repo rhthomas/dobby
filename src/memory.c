@@ -1,9 +1,9 @@
-/**
-    \file memory.c
-    \author Rhys Thomas (rt8g15@soton.ac.uk)
-    \date 2017-02-10
-    \brief Von Neumann system, single memory space for progam and data.
-*/
+/***************************************************************************//**
+@file   memory.c
+@author Rhys Thomas (rt8g15@soton.ac.uk)
+@date   2017-02-10
+@brief  Von Neumann system, single memory space for progam and data.
+*******************************************************************************/
 
 #include "memory.h"
 
@@ -13,9 +13,6 @@ void mem_write()
     memory[bus.addr] = bus.data;
 }
 
-/**
-    \brief Writes data from address in memory to data bus.
-*/
 void mem_read()
 {
     // write data in memory to bus

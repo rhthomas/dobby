@@ -17,21 +17,19 @@ INCDIRS = $(addprefix -I, $(INC))
 CC     = gcc
 CFLAGS = -std=c99 $(INCDIRS) -Wall
 
-MAKEFLAGS += --silent
-
 # get file dependencies then build dobby
 default: $(TARGET)
 
 # primary targets
 $(TARGET): $(OBJECTS)
-	$(CC) -o $@ $^ -lncurses
+	@$(CC) -o $@ $^ -lncurses
 
 # generate object dependencies
 $(OBJECTS): $(BUILD)%.o: $(SRC)%.c
 	-@mkdir -p build
-	@echo "CC $<"
-	$(CC) $(CFLAGS) -c $< -o $@
-	$(CC) $(CFLAGS) -MM -MF $(BUILD)$*.d $<
+	-@echo "CC $<"
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -MM -MF $(BUILD)$*.d $<
 
 # lists dependencies for object files
 # eg. alu.o: src/alu.c inc/alu.h inc/opcodes.h inc/registers.h inc/global.h \
@@ -40,13 +38,13 @@ $(OBJECTS): $(BUILD)%.o: $(SRC)%.c
 
 # compile documentation
 docs:
-	@doxygen
+	-@doxygen
 
 # open doxygen website
 open: docs
-	@open doxygen/html/index.html
+	-@open doxygen/html/index.html
 
 # clean away build files
 clean:
-	-@rm $(TARGET)
-	-@rm -rf doxygen/ $(BUILD)
+	-rm $(TARGET)
+	-rm -rf doxygen/ $(BUILD)
