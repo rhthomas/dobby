@@ -1,9 +1,9 @@
 /***************************************************************************//**
-@file   registers.c
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-02-10
-@brief  Registers in CPU.
-*******************************************************************************/
+ * @file   registers.c
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-02-10
+ * @brief  Registers in CPU.
+ ******************************************************************************/
 
 #include "registers.h"
 

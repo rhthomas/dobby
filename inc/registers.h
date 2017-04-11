@@ -1,9 +1,9 @@
 /***************************************************************************//**
-@file   registers.h
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-02-10
-@brief  Registers in CPU.
-*******************************************************************************/
+ * @file   registers.h
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-02-10
+ * @brief  Registers in CPU.
+ ******************************************************************************/
 
 #ifndef REGISTERS_H
 #define REGISTERS_H

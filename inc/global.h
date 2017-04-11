@@ -1,9 +1,9 @@
 /***************************************************************************//**
-@file   global.h
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-02-10
-@brief  Contains global program valiables and structures.
-*******************************************************************************/
+ * @file   global.h
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-02-10
+ * @brief  Contains global program valiables and structures.
+ ******************************************************************************/
 
 #ifndef GLOBAL_H
 #define GLOBAL_H

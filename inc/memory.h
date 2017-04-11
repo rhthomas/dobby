@@ -1,9 +1,9 @@
 /***************************************************************************//**
-@file   memory.h
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-02-10
-@brief  Von Neumann system, single memory space for progam and data.
-*******************************************************************************/
+ * @file   memory.h
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-02-10
+ * @brief  Von Neumann system, single memory space for progam and data.
+ ******************************************************************************/
 
 #ifndef MEMORY_H
 #define MEMORY_H

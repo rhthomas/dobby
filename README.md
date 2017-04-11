@@ -2,6 +2,8 @@
 
 University of Southampton second year ELEC2204 Computer Engineering coursework.
 
+![Block Diagram](./report/images/dobby.pdf)
+
 ## Directory structure
 
 ```
@@ -94,27 +96,4 @@ q: Quit program.
 
 ### Operation
 
-It doesn't show here but in the memory table the address that the address bus
-currently points to is highlighted.
-
-```
-Opcode: JUMP                  Memory:
-                              Addr  | Data
-State   pres:   FETCH         -------------
-        next:   DECODE        0x000 | 0xa006
-                              0x001 | 0x0005
-Bus     addr:   0x006         0x002 | 0x0004
-        data:   0x8001        0x003 | 0x0003
-                              0x004 | 0x0002
-ALU     input:  0x0000        0x005 | 0x0001
-                              0x006 | 0x8001
-     +----------+             0x007 | 0x1002
-  pc |  0x0006  |             0x008 | 0x9001
-     +----------+             0x009 | 0x8004
-  ir |  0x8001  |             0x00a | 0x6005
-     +----------+             0x00b | 0x0003
-  ac |  0x0000  |             0x00c | 0x7001
-     +----------+             0x00d | 0x9001
-                              0x00e | 0xa00e
-                              0x00f | 0x0000
-```
+![Terminal User Interface](./report/images/highlight-addr.png)

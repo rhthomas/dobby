@@ -27,7 +27,7 @@ $(TARGET): $(OBJECTS)
 # generate object dependencies
 $(OBJECTS): $(BUILD)%.o: $(SRC)%.c
 	-@mkdir -p build
-	-@echo "CC $<"
+	-@echo " CC\t$<"
 	@$(CC) $(CFLAGS) -c $< -o $@
 	@$(CC) $(CFLAGS) -MM -MF $(BUILD)$*.d $<
 

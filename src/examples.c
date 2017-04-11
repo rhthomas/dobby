@@ -1,10 +1,10 @@
 /***************************************************************************//**
-@file    examples.c
-@author  Rhys Thomas (rt8g15@soton.ac.uk)
-@date    2017-03-29
-@brief   Example assembly programs.
-@details These are copied into @p memory with memcpy based on keyboard presses.
-*******************************************************************************/
+ * @file    examples.c
+ * @author  Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date    2017-03-29
+ * @brief   Example assembly programs.
+ * @details These are copied into @p memory with memcpy based on key presses.
+ ******************************************************************************/
 
 #include "examples.h" // cpu memory size
 

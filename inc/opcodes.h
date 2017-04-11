@@ -1,9 +1,9 @@
 /***************************************************************************//**
-@file   opcodes.h
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-02-10
-@brief  Definitions of opcodes. Instruction set based on 4-bit opcodes.
-*******************************************************************************/
+ * @file   opcodes.h
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-02-10
+ * @brief  Definitions of opcodes. Instruction set based on 4-bit opcodes.
+ ******************************************************************************/
 
 #ifndef OPCODES_H
 #define OPCODES_H

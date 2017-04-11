@@ -1,10 +1,10 @@
 /***************************************************************************//**
-@file   decoder.c
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-02-10
-@brief  Instruction decoder.
-@image  html state.png
-*******************************************************************************/
+ * @file   decoder.c
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-02-10
+ * @brief  Instruction decoder.
+ * @image  html state.png
+ ******************************************************************************/
 
 #include "decoder.h"
 

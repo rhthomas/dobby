@@ -1,9 +1,9 @@
 /***************************************************************************//**
-@file   alu.h
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-02-10
-@brief  Detailing ALU arithmetic operations.
-*******************************************************************************/
+ * @file   alu.h
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-02-10
+ * @brief  Detailing ALU arithmetic operations.
+ ******************************************************************************/
 
 #ifndef ALU_H
 #define ALU_H

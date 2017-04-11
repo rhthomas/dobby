@@ -1,9 +1,9 @@
 /***************************************************************************//**
-@file   print.h
-@author Rhys Thomas (rt8g15@soton.ac.uk)
-@date   2017-03-21
-@brief  Functions to print debugging suite with ncurses.
-*******************************************************************************/
+ * @file   print.h
+ * @author Rhys Thomas (rt8g15@soton.ac.uk)
+ * @date   2017-03-21
+ * @brief  Functions to print debugging suite with ncurses.
+ ******************************************************************************/
 
 #ifndef PRINT_H
 #define PRINT_H
