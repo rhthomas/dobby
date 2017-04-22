@@ -14,8 +14,9 @@ OBJECTS = $(patsubst $(SRC)%.c, $(BUILD)%.o, $(SOURCES))
 INCDIRS = $(addprefix -I, $(INC))
 
 # tools and flags
-CC     = gcc
-CFLAGS = -std=c99 $(INCDIRS) -Wall
+CC        = gcc
+CFLAGS    = -std=c99 $(INCDIRS) -Wall
+MAKEFLAGS = -j4
 
 # get file dependencies then build dobby
 default: $(TARGET)
@@ -51,5 +52,5 @@ open: docs
 
 # clean away build files
 clean:
-	-@rm $(TARGET) $(TARGET).log
+	-@rm -f $(TARGET) $(TARGET).log
 	-@rm -rf docs/ $(BUILD)
