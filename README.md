@@ -11,24 +11,11 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
 ├── Doxyfile
 ├── Makefile
 ├── README.md
-├── build
-│   ├── alu.d
-│   ├── alu.o
-│   ├── decoder.d
-│   ├── decoder.o
-│   ├── dobby.d
-│   ├── dobby.o
-│   ├── memory.d
-│   ├── memory.o
-│   ├── print.d
-│   ├── print.o
-│   ├── registers.d
-│   └── registers.o
-├── dobby
 ├── inc
 │   ├── alu.h
 │   ├── decoder.h
 │   ├── dobby.h
+│   ├── examples.h
 │   ├── global.h
 │   ├── memory.h
 │   ├── opcodes.h
@@ -38,6 +25,7 @@ University of Southampton second year ELEC2204 Computer Engineering coursework.
     ├── alu.c
     ├── decoder.c
     ├── dobby.c
+    ├── examples.c
     ├── memory.c
     ├── print.c
     └── registers.c
@@ -50,22 +38,27 @@ and their dependencies. This means that if one or two files are changed the
 compiler only rebuilds the changed files, thus reducing compile time. To run the
 Makefile there are a number of options,
 * `make`, builds code to `dobby` executable.
-* `make clean`, cleans directory of build files (`build/`, `dobby` and `doxygen/`).
+* `make debug`, builds the same as `make` but invokes the DEBUG flag which
+writes internal signal values to `dobby.log` on each processor tick.
+* `make clean`, cleans directory of build files (`build/`, `dobby` and
+`doxygen/`).
 * `make docs`, calls Doxygen to generate code documentation.
+* `make open`, opens generated Doxygen in web browser.
 
 ```
-CC src/alu.c
-CC src/decoder.c
-CC src/dobby.c
-CC src/memory.c
-CC src/print.c
-CC src/registers.c
+ CC     src/alu.c
+ CC     src/decoder.c
+ CC     src/dobby.c
+ CC     src/examples.c
+ CC     src/memory.c
+ CC     src/print.c
+ CC     src/registers.c
 ```
 
 ## Example assembly
 
 In `examples.h` there are a number of example assembly programs. These programs
-are then stores in an array called `*examples`. The examples are then copied
+are then stored in an array called `*examples`. The examples are then copied
 into memory when the user presses certain number keys.
 
 ## Output
@@ -96,4 +89,4 @@ q: Quit program.
 
 ### Operation
 
-![Terminal User Interface](./report/images/highlight-addr.png)
+![Terminal User Interface](./highlight-addr.png)
