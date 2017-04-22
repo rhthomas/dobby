@@ -2,7 +2,7 @@
 
 University of Southampton second year ELEC2204 Computer Engineering coursework.
 
-![Block Diagram](./report/images/dobby.pdf)
+![Block Diagram](./img/dobby.pdf)
 
 ## Directory structure
 
@@ -89,4 +89,4 @@ q: Quit program.
 
 ### Operation
 
-![Terminal User Interface](./highlight-addr.png)
+![Terminal User Interface](./img/highlight-addr.png)
