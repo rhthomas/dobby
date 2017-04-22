@@ -2,7 +2,7 @@
 
 University of Southampton second year ELEC2204 Computer Engineering coursework.
 
-![Block Diagram](./img/dobby.pdf)
+![Block Diagram](./img/dobby.png)
 
 ## Directory structure
 
