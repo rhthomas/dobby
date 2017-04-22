@@ -57,7 +57,7 @@ writes internal signal values to `dobby.log` on each processor tick.
 
 ## Example assembly
 
-In `examples.h` there are a number of example assembly programs. These programs
+In `examples.c` there are a number of example assembly programs. These programs
 are then stored in an array called `*examples`. The examples are then copied
 into memory when the user presses certain number keys.
 
