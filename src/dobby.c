@@ -48,7 +48,11 @@ int main()
             // quit application
             case 'q': endwin(); return 0;
             // any other button - cycle
-            default: cycle(); break;
+            default: cycle();
+                #ifdef DEBUG
+                    logToFile();
+                #endif // DEBUG
+                break;
         }
         print_debug(mem);
     }

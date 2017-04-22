@@ -19,6 +19,11 @@ CFLAGS = -std=c99 $(INCDIRS) -Wall
 
 # get file dependencies then build dobby
 default: $(TARGET)
+all: default
+
+# compile option to log variables to a file
+debug: CFLAGS += -DDEBUG
+debug: default
 
 # primary targets
 $(TARGET): $(OBJECTS)
@@ -42,9 +47,9 @@ docs:
 
 # open doxygen website
 open: docs
-	-@open doxygen/html/index.html
+	-@open docs/html/index.html
 
 # clean away build files
 clean:
-	-rm $(TARGET)
-	-rm -rf doxygen/ $(BUILD)
+	-rm $(TARGET) $(TARGET).log
+	-rm -rf docs/ $(BUILD)

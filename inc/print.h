@@ -8,6 +8,8 @@
 #ifndef PRINT_H
 #define PRINT_H
 
+// #define DEBUG
+
 #include <ncurses.h>
 
 #include "alu.h"       // alu_input
@@ -47,5 +49,12 @@ void get_state();
  * @see   print_mem
  */
 void print_debug(int addr);
+
+/**
+ * @brief If in debug mode, log variable contents to file on each cycle.
+ */
+#ifdef DEBUG
+void logToFile(void);
+#endif // DEBUG
 
 #endif // PRINT_H

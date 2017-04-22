@@ -3,9 +3,10 @@ PROJECT_NAME           = "Dobby"
 PROJECT_BRIEF          = "University of Southampton second year ELEC2204 \
                          Computer Engineering coursework."
 HTML_COLORSTYLE_HUE    = 120
+HTML_TIMESTAMP         = YES
 
 # folder to store output
-OUTPUT_DIRECTORY       = doxygen
+OUTPUT_DIRECTORY       = docs
 QUIET                  = YES
 
 # access to files
@@ -15,9 +16,10 @@ USE_MATHJAX            = YES
 IMAGE_PATH             = report/images/
 
 # extraction parameters
-EXTRACT_ALL            = NO
+EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = YES
 HIDE_UNDOC_MEMBERS     = YES
+INLINE_SOURCES         = YES
 
 # generate class diagrams
 HIDE_UNDOC_RELATIONS   = YES

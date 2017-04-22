@@ -88,3 +88,22 @@ void print_debug(int addr)
     // memory
     print_mem(addr);
 }
+
+#ifdef DEBUG
+FILE *logfile;
+void logToFile(void)
+{
+    logfile = fopen("dobby.log","a");
+    if (logfile == NULL) {
+        fprintf(stderr, "Error: unable to open logfile.\r\n");
+        return;
+    }
+    fprintf(logfile, "opcode:            %s\r\n", opcode_print);
+    fprintf(logfile, "(pres/next) state: %d/%d\r\n", present_s, next_s);
+    fprintf(logfile, "(data/addr) bus:   0x%04X/0x%04X\r\n", bus.data, bus.addr);
+    fprintf(logfile, "alu_input:         %d\r\n", alu_input);
+    fprintf(logfile, "pc/ir/ac:          0x%04X/0x%04X/0x%04X\r\n", regs.pc, regs.ir, regs.ac);
+    fprintf(logfile, "\r\n");
+    fclose(logfile);
+}
+#endif

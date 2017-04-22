@@ -17,7 +17,14 @@
 #include "print.h"     // opcode_print
 
 /// Present and next state variables.
-enum {DECODE, FETCH, INC_PC} present_s, next_s;
+typedef enum state_t {
+	DECODE, ///< Decode instruction.
+	FETCH,  ///< Fetch instruction from memory.
+	INC_PC  ///< Increment program counter.
+} state_t;
+
+state_t present_s; ///< Present state.
+state_t next_s;    ///< Next state.
 
 /**
  * @brief Decodes instruction register.
