@@ -52,5 +52,8 @@ open: docs
 
 # clean away build files
 clean:
-	-@rm -f $(TARGET) $(TARGET).log
+	-@rm -f $(TARGET)
 	-@rm -rf docs/ $(BUILD)
+
+purge: clean
+	-@rm $(TARGET).log

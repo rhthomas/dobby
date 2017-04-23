@@ -1,0 +1,168 @@
+opcode:            (null)
+(pres/next) state: 1/0
+(data/addr) bus:   0xA006/0x0000
+alu_input:         0
+pc/ir/ac:          0x0000/0xA006/0x0000
+
+opcode:            JUMP  
+(pres/next) state: 0/1
+(data/addr) bus:   0xA006/0x0000
+alu_input:         0
+pc/ir/ac:          0x0006/0xA006/0x0000
+
+opcode:            JUMP  
+(pres/next) state: 1/0
+(data/addr) bus:   0x8001/0x0006
+alu_input:         0
+pc/ir/ac:          0x0006/0x8001/0x0000
+
+opcode:            LOAD  
+(pres/next) state: 0/2
+(data/addr) bus:   0x0005/0x0001
+alu_input:         0
+pc/ir/ac:          0x0006/0x8001/0x0005
+
+opcode:            LOAD  
+(pres/next) state: 2/1
+(data/addr) bus:   0x0005/0x0001
+alu_input:         0
+pc/ir/ac:          0x0007/0x8001/0x0005
+
+opcode:            LOAD  
+(pres/next) state: 1/0
+(data/addr) bus:   0x1002/0x0007
+alu_input:         0
+pc/ir/ac:          0x0007/0x1002/0x0005
+
+opcode:            SUB
+(pres/next) state: 0/2
+(data/addr) bus:   0x0004/0x0002
+alu_input:         4
+pc/ir/ac:          0x0007/0x1002/0x0001
+
+opcode:            SUB
+(pres/next) state: 2/1
+(data/addr) bus:   0x0004/0x0002
+alu_input:         4
+pc/ir/ac:          0x0008/0x1002/0x0001
+
+opcode:            SUB
+(pres/next) state: 1/0
+(data/addr) bus:   0x9001/0x0008
+alu_input:         4
+pc/ir/ac:          0x0008/0x9001/0x0001
+
+opcode:            WRTE  
+(pres/next) state: 0/2
+(data/addr) bus:   0x0001/0x0001
+alu_input:         4
+pc/ir/ac:          0x0008/0x9001/0x0001
+
+opcode:            WRTE  
+(pres/next) state: 2/1
+(data/addr) bus:   0x0001/0x0001
+alu_input:         4
+pc/ir/ac:          0x0009/0x9001/0x0001
+
+opcode:            WRTE  
+(pres/next) state: 1/0
+(data/addr) bus:   0x8004/0x0009
+alu_input:         4
+pc/ir/ac:          0x0009/0x8004/0x0001
+
+opcode:            LOAD  
+(pres/next) state: 0/2
+(data/addr) bus:   0x0002/0x0004
+alu_input:         4
+pc/ir/ac:          0x0009/0x8004/0x0002
+
+opcode:            LOAD  
+(pres/next) state: 2/1
+(data/addr) bus:   0x0002/0x0004
+alu_input:         4
+pc/ir/ac:          0x000A/0x8004/0x0002
+
+opcode:            LOAD  
+(pres/next) state: 1/0
+(data/addr) bus:   0x6005/0x000A
+alu_input:         4
+pc/ir/ac:          0x000A/0x6005/0x0002
+
+opcode:            DIV
+(pres/next) state: 0/2
+(data/addr) bus:   0x0001/0x0005
+alu_input:         1
+pc/ir/ac:          0x000A/0x6005/0x0002
+
+opcode:            DIV
+(pres/next) state: 2/1
+(data/addr) bus:   0x0001/0x0005
+alu_input:         1
+pc/ir/ac:          0x000B/0x6005/0x0002
+
+opcode:            DIV
+(pres/next) state: 1/0
+(data/addr) bus:   0x0003/0x000B
+alu_input:         1
+pc/ir/ac:          0x000B/0x0003/0x0002
+
+opcode:            ADD
+(pres/next) state: 0/2
+(data/addr) bus:   0x0003/0x0003
+alu_input:         3
+pc/ir/ac:          0x000B/0x0003/0x0005
+
+opcode:            ADD
+(pres/next) state: 2/1
+(data/addr) bus:   0x0003/0x0003
+alu_input:         3
+pc/ir/ac:          0x000C/0x0003/0x0005
+
+opcode:            ADD
+(pres/next) state: 1/0
+(data/addr) bus:   0x7001/0x000C
+alu_input:         3
+pc/ir/ac:          0x000C/0x7001/0x0005
+
+opcode:            MUL
+(pres/next) state: 0/2
+(data/addr) bus:   0x0001/0x0001
+alu_input:         1
+pc/ir/ac:          0x000C/0x7001/0x0005
+
+opcode:            MUL
+(pres/next) state: 2/1
+(data/addr) bus:   0x0001/0x0001
+alu_input:         1
+pc/ir/ac:          0x000D/0x7001/0x0005
+
+opcode:            MUL
+(pres/next) state: 1/0
+(data/addr) bus:   0x9001/0x000D
+alu_input:         1
+pc/ir/ac:          0x000D/0x9001/0x0005
+
+opcode:            WRTE  
+(pres/next) state: 0/2
+(data/addr) bus:   0x0005/0x0001
+alu_input:         1
+pc/ir/ac:          0x000D/0x9001/0x0005
+
+opcode:            WRTE  
+(pres/next) state: 2/1
+(data/addr) bus:   0x0005/0x0001
+alu_input:         1
+pc/ir/ac:          0x000E/0x9001/0x0005
+
+opcode:            WRTE  
+(pres/next) state: 1/0
+(data/addr) bus:   0xA00E/0x000E
+alu_input:         1
+pc/ir/ac:          0x000E/0xA00E/0x0005
+
+opcode:            JUMP  
+(pres/next) state: 0/1
+(data/addr) bus:   0xA00E/0x000E
+alu_input:         1
+pc/ir/ac:          0x000E/0xA00E/0x0005
+
