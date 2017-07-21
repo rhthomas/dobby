@@ -2,8 +2,6 @@
 
 University of Southampton second year ELEC2204 Computer Engineering coursework.
 
-![Block Diagram](./dobby.pdf)
-
 ## Directory structure
 
 ```
@@ -87,6 +85,6 @@ q: Quit program.
 2: Program #2
 ```
 
-### Operation
+### Documention
 
-![Terminal User Interface](./highlight-addr.png)
+Futher documentation in the form of a compiled doxygen website can be found [here](https://rhthomas.github.io/docs/dobby/).
